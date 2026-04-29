@@ -1,0 +1,72 @@
+--color-lobster-pink-50: #faebeb;
+--color-lobster-pink-100: #f5d6d6;
+--color-lobster-pink-200: #eaaeae;
+--color-lobster-pink-300: #e08585;
+--color-lobster-pink-400: #d55d5d;
+--color-lobster-pink-500: #cb3434;
+--color-lobster-pink-600: #a22a2a;
+--color-lobster-pink-700: #7a1f1f;
+--color-lobster-pink-800: #511515;
+--color-lobster-pink-900: #290a0a;
+--color-lobster-pink-950: #1c0707;
+
+--color-orange-50: #fff5e6;
+--color-orange-100: #feebcd;
+--color-orange-200: #fdd89b;
+--color-orange-300: #fdc468;
+--color-orange-400: #fcb036;
+--color-orange-500: #fb9c04;
+--color-orange-600: #c97d03;
+--color-orange-700: #975e02;
+--color-orange-800: #643f02;
+--color-orange-900: #321f01;
+--color-orange-950: #231601;
+
+--color-golden-pollen-50: #fef8e6;
+--color-golden-pollen-100: #fdf1ce;
+--color-golden-pollen-200: #fce49c;
+--color-golden-pollen-300: #fad66b;
+--color-golden-pollen-400: #f9c939;
+--color-golden-pollen-500: #f7bb08;
+--color-golden-pollen-600: #c69606;
+--color-golden-pollen-700: #947005;
+--color-golden-pollen-800: #634b03;
+--color-golden-pollen-900: #312502;
+--color-golden-pollen-950: #231a01;
+
+--color-muted-olive-50: #eff6ef;
+--color-muted-olive-100: #dfedde;
+--color-muted-olive-200: #bfdabe;
+--color-muted-olive-300: #9fc89d;
+--color-muted-olive-400: #7eb67c;
+--color-muted-olive-500: #5ea35c;
+--color-muted-olive-600: #4b8349;
+--color-muted-olive-700: #396237;
+--color-muted-olive-800: #264125;
+--color-muted-olive-900: #132112;
+--color-muted-olive-950: #0d170d;
+
+--color-ocean-blue-50: #ebf4f9;
+--color-ocean-blue-100: #d7eaf4;
+--color-ocean-blue-200: #b0d4e8;
+--color-ocean-blue-300: #88bfdd;
+--color-ocean-blue-400: #61aad1;
+--color-ocean-blue-500: #3995c6;
+--color-ocean-blue-600: #2e779e;
+--color-ocean-blue-700: #225977;
+--color-ocean-blue-800: #173b4f;
+--color-ocean-blue-900: #0b1e28;
+--color-ocean-blue-950: #08151c;
+
+--color-vintage-grape-50: #f2f0f4;
+--color-vintage-grape-100: #e5e2e9;
+--color-vintage-grape-200: #cbc5d3;
+--color-vintage-grape-300: #b1a8bd;
+--color-vintage-grape-400: #978ba7;
+--color-vintage-grape-500: #7d6e91;
+--color-vintage-grape-600: #645874;
+--color-vintage-grape-700: #4b4257;
+--color-vintage-grape-800: #322c3a;
+--color-vintage-grape-900: #19161d;
+--color-vintage-grape-950: #110f14;
+
