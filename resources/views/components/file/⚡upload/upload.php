@@ -21,12 +21,6 @@ new class extends Component
 
         $path = $this->foto->getRealPath();
 
-        try {
-            $this->resultado = $uppaApiService->catalogarHongo($path);
-        } catch (\Exception $e) {
-            session()->flash('error', 'Error al analizar la imagen: ' . $e->getMessage());
-        } finally {
-            $this->cargando = false;
-        }
+        $this->resultado = $uppaApiService->catalogarHongo($path);
     }
 };
