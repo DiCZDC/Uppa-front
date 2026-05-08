@@ -26,6 +26,9 @@
     --color-accent: var(--color-neutral-800);
     --color-accent-content: var(--color-neutral-800);
     --color-accent-foreground: var(--color-white);
+
+    --color-golden-pollen: #f9cb43;
+    --color-vintage-grape: #3C3545;
 }
 
 @layer theme {

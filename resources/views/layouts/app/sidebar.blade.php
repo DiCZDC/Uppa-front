@@ -15,6 +15,8 @@
                     <flux:sidebar.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>
                         {{ __('Dashboard') }}
                     </flux:sidebar.item>
+
+                    <x-item-sidebar icon="projector" icon-hover="aperture" ruta="reconocimiento.index" texto="Reconocimiento" />
                 </flux:sidebar.group>
             </flux:sidebar.nav>
 
