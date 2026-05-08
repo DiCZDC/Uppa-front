@@ -34,5 +34,7 @@ return [
             'channel' => env('SLACK_BOT_USER_DEFAULT_CHANNEL'),
         ],
     ],
-
+    'uppa_api' => [
+        'url' => env('UPPA_API_URL'),
+    ],
 ];
