@@ -1,3 +1,3 @@
 <x-layouts::app :title="__('Reconocimiento')">
-    jala index
+    jala index 
 </x-layouts::app>
