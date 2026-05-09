@@ -16,7 +16,7 @@ class UppaApiService
     public function catalogarHongo(string $imagePath): array
     {
         $response = Http::attach(
-            'image_bytes',
+            'file',
             file_get_contents($imagePath),
             basename($imagePath)
         )->post("{$this->baseUrl}/analizar");
@@ -25,6 +25,6 @@ class UppaApiService
             return $response->json();
         }
 
-        throw new \Exception('Error al contactar la API: ' . $response->status());
+        throw new \Exception('Error al contactar la API: ' . $response->status().' - ' . $response->body());
     }
 }
