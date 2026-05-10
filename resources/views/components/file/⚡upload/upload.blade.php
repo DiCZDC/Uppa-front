@@ -53,29 +53,41 @@
                     </span>
                 </div>
 
-                {{-- IDLE controls --}}
+                {{-- IDLE controls — dos opciones equivalentes --}}
                 <div
                     x-show="mode === 'idle'"
-                    class="absolute inset-x-0 bottom-0 flex flex-col items-center gap-3 px-6 pb-7 text-center"
+                    class="absolute inset-x-0 bottom-0 flex flex-col items-center gap-3 px-5 pb-7"
                 >
-                    <button
-                        type="button"
-                        @click="openCamera()"
-                        class="inline-flex h-[50px] items-center gap-2 rounded-full bg-gold px-6 text-[14px] font-bold tracking-[-0.1px] text-grape transition hover:brightness-105"
-                        style="box-shadow: 0 6px 14px rgba(249,203,67,0.45);"
-                    >
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-[18px]">
-                            <path d="M4 8h3l2-2h6l2 2h3a1 1 0 011 1v9a1 1 0 01-1 1H4a1 1 0 01-1-1V9a1 1 0 011-1z" />
-                            <circle cx="12" cy="13" r="3.5" />
-                        </svg>
-                        {{ $foto ? __('Volver a tomar') : __('Abrir cámara') }}
-                    </button>
-                    <label
-                        for="micoscan-foto"
-                        class="cursor-pointer text-[12px] font-semibold text-cream/80 underline-offset-4 hover:underline"
-                    >
-                        {{ __('o subir desde galería') }}
-                    </label>
+                    <div class="grid w-full max-w-xs grid-cols-2 gap-2.5">
+                        <button
+                            type="button"
+                            @click="openCamera()"
+                            class="inline-flex h-[50px] items-center justify-center gap-1.5 rounded-2xl bg-gold px-3 text-[13px] font-bold tracking-[-0.1px] text-grape transition hover:brightness-105"
+                            style="box-shadow: 0 6px 14px rgba(249,203,67,0.45);"
+                        >
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-[18px]">
+                                <path d="M4 8h3l2-2h6l2 2h3a1 1 0 011 1v9a1 1 0 01-1 1H4a1 1 0 01-1-1V9a1 1 0 011-1z" />
+                                <circle cx="12" cy="13" r="3.5" />
+                            </svg>
+                            {{ $foto ? __('Volver a tomar') : __('Tomar foto') }}
+                        </button>
+                        <label
+                            for="micoscan-foto"
+                            class="inline-flex h-[50px] cursor-pointer items-center justify-center gap-1.5 rounded-2xl border border-cream/30 bg-black/35 px-3 text-[13px] font-bold tracking-[-0.1px] text-cream backdrop-blur transition hover:bg-black/50"
+                        >
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-[18px]">
+                                <rect x="3" y="5" width="18" height="14" rx="2" />
+                                <circle cx="9" cy="10" r="1.5" />
+                                <path d="M3 17l5-5 4 4 3-3 6 6" />
+                            </svg>
+                            {{ $foto ? __('Cambiar') : __('Elegir archivo') }}
+                        </label>
+                    </div>
+                    @if (! $foto)
+                        <p class="text-center text-[11px] text-cream/55">
+                            {{ __('Toma una foto con la cámara o sube una imagen del hongo') }}
+                        </p>
+                    @endif
                 </div>
 
                 {{-- CAMERA controls --}}
