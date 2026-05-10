@@ -1,17 +1,20 @@
 @props([
     'sidebar' => false,
+    'mode' => 'color',
+    'showText' => true,
 ])
 
 @if($sidebar)
-    <flux:sidebar.brand name="Laravel Starter Kit" {{ $attributes }}>
-        <x-slot name="logo" class="flex aspect-square size-8 items-center justify-center rounded-md bg-accent-content text-accent-foreground">
-            <x-app-logo-icon class="size-5 fill-current text-white dark:text-black" />
+    <flux:sidebar.brand name="MicoScan" {{ $attributes }}>
+        <x-slot name="logo" class="flex aspect-square size-9 items-center justify-center">
+            <x-app-logo-icon mode="{{ $mode }}" class="size-9" />
         </x-slot>
     </flux:sidebar.brand>
 @else
-    <flux:brand name="Laravel Starter Kit" {{ $attributes }}>
-        <x-slot name="logo" class="flex aspect-square size-8 items-center justify-center rounded-md bg-accent-content text-accent-foreground">
-            <x-app-logo-icon class="size-5 fill-current text-white dark:text-black" />
-        </x-slot>
-    </flux:brand>
+    <a {{ $attributes->merge(['class' => 'inline-flex items-center gap-2.5']) }}>
+        <x-app-logo-icon mode="{{ $mode }}" class="size-9" />
+        @if($showText)
+            <span class="font-display text-[20px] font-medium tracking-[-0.4px] text-ink">MicoScan</span>
+        @endif
+    </a>
 @endif
