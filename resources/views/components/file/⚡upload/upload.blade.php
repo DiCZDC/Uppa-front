@@ -1,15 +1,41 @@
-<div wire:loading.class.remove="ms-loading" class="space-y-5">
+<div wire:loading.class.remove="ms-loading" class="space-y-5" x-data="micoscanCamera">
     {{-- ─── Camera / capture state ─────────────────────────────────────── --}}
     @if (is_null($resultado))
-        <form wire:submit="analizar" class="space-y-4" wire:loading.class="opacity-0 pointer-events-none" wire:target="analizar">
-            <label
-                for="micoscan-foto"
-                class="relative flex aspect-[4/5] w-full max-w-md cursor-pointer flex-col items-center justify-center overflow-hidden rounded-3xl border border-white/10 text-cream transition hover:brightness-110"
+        <form
+            wire:submit="analizar"
+            class="space-y-4"
+            wire:loading.class="opacity-0 pointer-events-none"
+            wire:target="analizar"
+        >
+            <div
+                class="relative aspect-[4/5] w-full max-w-md overflow-hidden rounded-3xl border border-white/10 text-cream"
                 style="background: radial-gradient(80% 60% at 50% 60%, #4a5a32 0%, #2a341e 60%, #0e1408 100%);"
             >
-                <div class="absolute inset-0" style="background: repeating-linear-gradient(45deg, rgba(255,255,255,0.025) 0 2px, transparent 2px 8px);"></div>
+                {{-- Texture --}}
+                <div class="pointer-events-none absolute inset-0" style="background: repeating-linear-gradient(45deg, rgba(255,255,255,0.025) 0 2px, transparent 2px 8px);"></div>
 
-                {{-- Reticle --}}
+                {{-- Live camera feed --}}
+                <video
+                    x-ref="video"
+                    x-show="mode === 'camera'"
+                    autoplay
+                    playsinline
+                    muted
+                    class="absolute inset-0 size-full object-cover"
+                ></video>
+
+                {{-- Captured / selected photo preview --}}
+                @if ($foto && method_exists($foto, 'temporaryUrl'))
+                    <img
+                        x-show="mode !== 'camera'"
+                        src="{{ $foto->temporaryUrl() }}"
+                        alt="{{ __('Vista previa') }}"
+                        class="absolute inset-0 size-full object-cover"
+                    />
+                    <div x-show="mode !== 'camera'" class="pointer-events-none absolute inset-0 bg-grape/30"></div>
+                @endif
+
+                {{-- Reticle (always visible) --}}
                 <div class="pointer-events-none absolute left-1/2 top-1/2 size-[260px] -translate-x-1/2 -translate-y-1/2">
                     <div class="absolute left-0 top-0 size-8 rounded-tl-2xl border-l-[3px] border-t-[3px] border-white"></div>
                     <div class="absolute right-0 top-0 size-8 rounded-tr-2xl border-r-[3px] border-t-[3px] border-white"></div>
@@ -17,33 +43,86 @@
                     <div class="absolute right-0 bottom-0 size-8 rounded-br-2xl border-r-[3px] border-b-[3px] border-white"></div>
                 </div>
 
-                @if ($foto && method_exists($foto, 'temporaryUrl'))
-                    <img
-                        src="{{ $foto->temporaryUrl() }}"
-                        alt="{{ __('Vista previa') }}"
-                        class="absolute inset-0 size-full object-cover"
-                    />
-                    <div class="pointer-events-none absolute inset-0 bg-grape/30"></div>
-                @endif
-
-                <div class="relative flex flex-col items-center gap-3 px-6 text-center">
-                    <span class="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-black/40 px-3 py-1.5 text-[12px] font-semibold backdrop-blur">
+                {{-- Status badge (top) --}}
+                <div class="absolute left-0 right-0 top-4 flex justify-center">
+                    <span class="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-black/45 px-3 py-1.5 text-[12px] font-semibold backdrop-blur">
                         <span class="size-1.5 rounded-full bg-olive"></span>
-                        {{ $foto ? __('Foto lista') : __('Listo para escanear') }}
+                        <span x-show="mode === 'idle'">{{ $foto ? __('Foto lista') : __('Listo para escanear') }}</span>
+                        <span x-show="mode === 'camera'" x-cloak>{{ __('Apunta y captura') }}</span>
+                        <span x-show="mode === 'uploading'" x-cloak>{{ __('Subiendo foto…') }}</span>
                     </span>
-                    <div class="flex size-[78px] items-center justify-center rounded-full border-4 border-white p-1">
+                </div>
+
+                {{-- IDLE controls --}}
+                <div
+                    x-show="mode === 'idle'"
+                    class="absolute inset-x-0 bottom-0 flex flex-col items-center gap-3 px-6 pb-7 text-center"
+                >
+                    <button
+                        type="button"
+                        @click="openCamera()"
+                        class="inline-flex h-[50px] items-center gap-2 rounded-full bg-gold px-6 text-[14px] font-bold tracking-[-0.1px] text-grape transition hover:brightness-105"
+                        style="box-shadow: 0 6px 14px rgba(249,203,67,0.45);"
+                    >
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-[18px]">
+                            <path d="M4 8h3l2-2h6l2 2h3a1 1 0 011 1v9a1 1 0 01-1 1H4a1 1 0 01-1-1V9a1 1 0 011-1z" />
+                            <circle cx="12" cy="13" r="3.5" />
+                        </svg>
+                        {{ $foto ? __('Volver a tomar') : __('Abrir cámara') }}
+                    </button>
+                    <label
+                        for="micoscan-foto"
+                        class="cursor-pointer text-[12px] font-semibold text-cream/80 underline-offset-4 hover:underline"
+                    >
+                        {{ __('o subir desde galería') }}
+                    </label>
+                </div>
+
+                {{-- CAMERA controls --}}
+                <div
+                    x-show="mode === 'camera'"
+                    x-cloak
+                    class="absolute inset-x-0 bottom-0 flex items-center justify-between px-7 pb-7"
+                >
+                    <button
+                        type="button"
+                        @click="closeCamera()"
+                        class="inline-flex size-12 items-center justify-center rounded-full border border-white/20 bg-black/45 text-white backdrop-blur transition hover:bg-black/65"
+                        aria-label="{{ __('Cerrar cámara') }}"
+                    >
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-5">
+                            <path d="M18 6L6 18M6 6l12 12" />
+                        </svg>
+                    </button>
+                    <button
+                        type="button"
+                        @click="capture()"
+                        class="flex size-[78px] items-center justify-center rounded-full border-4 border-white p-1 transition active:scale-95"
+                        aria-label="{{ __('Capturar foto') }}"
+                    >
                         <span class="flex size-full items-center justify-center rounded-full bg-olive text-white" style="box-shadow: 0 0 24px rgba(128,182,126,0.5);">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="size-7">
                                 <path d="M4 8h3l2-2h6l2 2h3a1 1 0 011 1v9a1 1 0 01-1 1H4a1 1 0 01-1-1V9a1 1 0 011-1z" />
                                 <circle cx="12" cy="13" r="3.5" />
                             </svg>
                         </span>
-                    </div>
-                    <div class="text-[13px] font-medium text-white drop-shadow">
-                        {{ $foto ? __('Toca para reemplazar la foto') : __('Toca para tomar o subir una foto') }}
+                    </button>
+                    <span class="size-12"></span>
+                </div>
+
+                {{-- UPLOADING overlay --}}
+                <div
+                    x-show="mode === 'uploading'"
+                    x-cloak
+                    class="absolute inset-0 flex items-center justify-center bg-grape/55 backdrop-blur-sm"
+                >
+                    <div class="flex flex-col items-center gap-3 text-cream">
+                        <div class="ms-spin size-10 rounded-full border-[3px] border-gold border-t-transparent"></div>
+                        <div class="text-[13px] font-medium">{{ __('Procesando captura…') }}</div>
                     </div>
                 </div>
 
+                {{-- Hidden file input (gallery fallback) --}}
                 <input
                     id="micoscan-foto"
                     type="file"
@@ -52,7 +131,16 @@
                     capture="environment"
                     class="sr-only"
                 />
-            </label>
+            </div>
+
+            {{-- Camera error (Alpine-side) --}}
+            <div x-show="cameraError" x-cloak class="flex items-start gap-3 rounded-2xl border border-pink/30 bg-card p-4 text-pink">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-5 shrink-0">
+                    <path d="M12 3l10 17H2L12 3z" />
+                    <path d="M12 10v5M12 18v.5" />
+                </svg>
+                <div class="text-[13px]" x-text="cameraError"></div>
+            </div>
 
             @error('foto')
                 <div class="flex items-start gap-3 rounded-2xl border border-pink/30 bg-card p-4 text-pink">
@@ -77,6 +165,7 @@
             <div class="flex flex-col gap-2.5 sm:flex-row">
                 <button
                     type="submit"
+                    x-bind:disabled="mode !== 'idle' || !{{ $foto ? 'true' : 'false' }}"
                     @disabled(!$foto)
                     class="inline-flex h-[50px] flex-1 items-center justify-center gap-2 rounded-2xl bg-olive px-5 text-[15px] font-semibold text-white ms-shadow-cta transition hover:brightness-105 disabled:cursor-not-allowed disabled:opacity-50"
                 >
@@ -337,3 +426,102 @@
         </article>
     @endif
 </div>
+
+@script
+<script>
+    Alpine.data('micoscanCamera', () => ({
+        mode: 'idle',          // 'idle' | 'camera' | 'uploading'
+        stream: null,
+        cameraError: null,
+
+        init() {
+            this._beforeUnload = () => this.closeCamera();
+            window.addEventListener('beforeunload', this._beforeUnload);
+        },
+
+        destroy() {
+            window.removeEventListener('beforeunload', this._beforeUnload);
+            this.closeCamera();
+        },
+
+        async openCamera() {
+            this.cameraError = null;
+
+            if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+                this.cameraError = 'Tu navegador no soporta acceso a la cámara.';
+                return;
+            }
+
+            if (!window.isSecureContext) {
+                this.cameraError = 'La cámara solo funciona sobre HTTPS o en localhost.';
+                return;
+            }
+
+            try {
+                this.stream = await navigator.mediaDevices.getUserMedia({
+                    video: { facingMode: { ideal: 'environment' } },
+                    audio: false,
+                });
+                this.mode = 'camera';
+                await this.$nextTick();
+                const video = this.$refs.video;
+                if (!video) return;
+                video.srcObject = this.stream;
+                try { await video.play(); } catch (_) { /* iOS Safari may need user gesture; click already counts */ }
+            } catch (err) {
+                let msg = 'No se pudo abrir la cámara.';
+                if (err && err.name === 'NotAllowedError') {
+                    msg = 'Permiso de cámara denegado. Habilítalo en los ajustes del navegador.';
+                } else if (err && err.name === 'NotFoundError') {
+                    msg = 'No se encontró ninguna cámara conectada.';
+                } else if (err && err.name === 'NotReadableError') {
+                    msg = 'La cámara está siendo usada por otra aplicación.';
+                }
+                this.cameraError = msg;
+                this.mode = 'idle';
+            }
+        },
+
+        closeCamera() {
+            if (this.stream) {
+                this.stream.getTracks().forEach(t => t.stop());
+                this.stream = null;
+            }
+            const video = this.$refs.video;
+            if (video) video.srcObject = null;
+            if (this.mode === 'camera') this.mode = 'idle';
+        },
+
+        async capture() {
+            const video = this.$refs.video;
+            if (!video || !video.videoWidth) {
+                this.cameraError = 'La cámara aún no está lista.';
+                return;
+            }
+
+            const canvas = document.createElement('canvas');
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            canvas.getContext('2d').drawImage(video, 0, 0);
+
+            const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/jpeg', 0.92));
+            if (!blob) {
+                this.cameraError = 'No se pudo capturar la foto.';
+                return;
+            }
+
+            const file = new File([blob], 'micoscan-' + Date.now() + '.jpg', { type: 'image/jpeg' });
+
+            this.closeCamera();
+            this.mode = 'uploading';
+
+            this.$wire.upload(
+                'foto',
+                file,
+                () => { this.mode = 'idle'; },
+                () => { this.cameraError = 'Error al subir la foto.'; this.mode = 'idle'; },
+            );
+        },
+    }));
+</script>
+@endscript
