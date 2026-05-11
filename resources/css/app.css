@@ -10,7 +10,10 @@
 
 @theme {
     
+    --breakpoint-3xs: 420px;
+    --breakpoint-2xs: 462px;
     --breakpoint-xs: 469px;
+    --breakpoint-sx: 540px;
     --breakpoint-sm: 640px;
     --breakpoint-md: 769px;
     --breakpoint-lg: 1025px;

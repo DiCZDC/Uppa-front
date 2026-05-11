@@ -137,65 +137,70 @@
                             @endif
                         </div>
 
-                        <div class="mt-5 p-2.5 flex flex-col items-start justify-center gap-2.5 text-ink">
+                        <div class="mt-5 p-2.5 flex flex-col items-start justify-center gap-2.5 text-ink text-base">
                             
-                            <div class="flex justify-start items-center gap-3 truncate font-display text-sm font-normal leading-[1.2] max-[540px]:flex-col max-[540px]:items-start max-[540px]:gap-1.5 max-[540px]:!whitespace-normal max-[540px]:!overflow-visible max-[540px]:!text-clip">
+                            <div class="flex justify-start items-center gap-3 truncate font-display font-normal leading-[1.2] 
+                            max-2xs:flex-col max-2xs:items-start max-2xs:gap-1.5 max-2xs:!whitespace-normal max-2xs:!overflow-visible max-2xs:!text-clip">
                                <span class="inline-flex gap-1.5 items-center">
-                                    <flux:icon.book-marked class="size=3"/>
+                                    <flux:icon.book-marked class="size-3"/>
                                     Nombre comun:  
                                 </span>  
                                <span class="italic font-medium ">
-                                    <flux:badge color="yellow">
+                                    <flux:badge color="yellow" size="sm">
                                     {{ $m['com'] }}
                                     </flux:badge>
                                 </span>
                             </div>
                             
-                            <div class="flex justify-start items-center gap-3 truncate font-display text-sm font-normal leading-[1.2] max-[540px]:flex-col max-[540px]:items-start max-[540px]:gap-1.5 max-[540px]:!whitespace-normal max-[540px]:!overflow-visible max-[540px]:!text-clip">
+                            <div class="flex justify-start items-center gap-3 truncate font-display font-normal leading-[1.2]
+                             max-2xs:flex-col max-2xs:items-start max-2xs:gap-1.5 max-2xs:!whitespace-normal max-2xs:!overflow-visible max-2xs:!text-clip">
                                <span class="inline-flex gap-1.5 items-center">
-                                    <flux:icon.flask-conical class="size=3"/>
+                                    <flux:icon.flask-conical class="size-3"/>
                                     Nombre cientifico:  
                                 </span>  
                                <span class="italic font-medium ">
-                                    <flux:badge color="lime">
+                                    <flux:badge color="lime" size="sm">
                                     {{ $m['name'] }}
                                     </flux:badge>
                                 </span>
                             </div>
 
                             @if ($m['status'] !== 'sano')
-                                <div class="flex justify-start items-center gap-3 truncate font-display text-sm font-normal leading-[1.2] max-[540px]:flex-col max-[540px]:items-start max-[540px]:gap-1.5 max-[540px]:!whitespace-normal max-[540px]:!overflow-visible max-[540px]:!text-clip">
+                                <div class="flex justify-start items-center gap-3 truncate font-display font-normal leading-[1.2] 
+                                max-sx:flex-col max-sx:items-start max-sx:gap-1.5 max-sx:!whitespace-normal max-sx:!overflow-visible max-sx:!text-clip">
                                    <span class="inline-flex gap-1.5 items-center">
-                                        <flux:icon.activity class="size=3"/>
+                                        <flux:icon.activity class="size-3"/>
                                         Nombre común de la enfermedad:  
                                     </span>  
                                    <span class="italic font-medium ">
-                                        <flux:badge color="red">
+                                        <flux:badge color="red" size="sm">
                                         Verticillium
                                         </flux:badge>
                                     </span>
                                 </div>
 
-                                <div class="flex justify-start items-center gap-3 truncate font-display text-sm font-normal leading-[1.2] max-[540px]:flex-col max-[540px]:items-start max-[540px]:gap-1.5 max-[540px]:!whitespace-normal max-[540px]:!overflow-visible max-[540px]:!text-clip">
+                                <div class="flex justify-start items-center gap-3 truncate font-display font-normal leading-[1.2] 
+                                max-sx:flex-col max-sx:items-start max-sx:gap-1.5 max-sx:!whitespace-normal max-sx:!overflow-visible max-sx:!text-clip">
                                    <span class="inline-flex gap-1.5 items-center">
-                                        <flux:icon.stethoscope class="size=3"/>
+                                        <flux:icon.stethoscope class="size-3"/>
                                         Nombre científico de la enfermedad :  
                                     </span>  
                                    <span class="italic font-medium ">
-                                        <flux:badge color="red">
+                                        <flux:badge color="red" size="sm">
                                         Burbuja Seca
                                         </flux:badge>
                                     </span>
                                 </div>
                             @endif
 
-                            <div class="flex justify-start items-center gap-3 truncate font-display text-sm font-normal leading-[1.2] max-[540px]:flex-col max-[540px]:items-start max-[540px]:gap-1.5 max-[540px]:!whitespace-normal max-[540px]:!overflow-visible max-[540px]:!text-clip">
+                            <div class="flex justify-start items-center gap-3 truncate font-display font-normal leading-[1.2] 
+                            max-2xs:flex-col max-2xs:items-start max-2xs:gap-1.5 max-2xs:!whitespace-normal max-2xs:!overflow-visible max-2xs:!text-clip">
                                <span class="inline-flex gap-1.5 items-center">
-                                    <flux:icon.calendar-fold class="size=3"/>
+                                    <flux:icon.calendar-fold class="size-3"/>
                                     Fecha de análisis:  
                                 </span>  
                                <span class="italic font-medium ">
-                                    <flux:badge color="zinc">
+                                    <flux:badge color="zinc" size="sm">
                                     {{ $m['date'] }}
                                     </flux:badge>
                                 </span>
