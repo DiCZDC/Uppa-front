@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ReconocimientoController;
+use App\Http\Controllers\GraficasController;
 
 Route::view('/', 'welcome')->name('home');
 
@@ -12,6 +13,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::controller(ReconocimientoController::class)->group(function () {
             Route::get('/', 'index')->name('index');
             Route::get('/{id}', 'show')->name('show');
+        });
+    });
+
+
+    Route::prefix('graficas')->name('graficas.')->group(function () {
+        Route::controller(GraficasController::class)->group(function () {
+            Route::get('/', 'index')->name('index');
         });
     });
 });
