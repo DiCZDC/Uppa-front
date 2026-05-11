@@ -1,42 +1,40 @@
 <x-layouts::app :title="__('Inicio')">
     <div class="mx-auto w-full max-w-3xl px-5 pt-2 pb-12">
         {{-- Greeting --}}
-        <div class="pb-3">
-            <div class="text-[13px] text-ink-2">
-                {{ __('Hola') }}, {{ auth()->user()->name }} 👋
+        <div class="pb-3 flex flex-col items-start gap-3.5 ">
+            <div class="text-base text-ink-2">
+                {{ __('¡Hola!') }}, {{ auth()->user()->name }} 
             </div>
-            <h1 class="mt-1 font-display text-[28px] font-medium leading-[1.1] tracking-[-0.6px] text-ink">
-                {{ __('¿Qué hongo') }}<br>{{ __('encontraste hoy?') }}
-            </h1>
+            <div class="inline-flex gap-4 text-ink items-center">
+                <flux:icon.scan-search class="size-12" />
+
+                <h1 class="mt-1 font-display text-[28px] font-medium leading-[1.1] tracking-[-0.6px]">
+                    {{ __('¿Qué vamos') }}<br>{{ __('a analizar hoy?') }}
+                </h1>
+            </div>
         </div>
 
         {{-- Hero scan card --}}
         <a
             href="{{ route('reconocimiento.index') }}"
             wire:navigate
-            class="relative block overflow-hidden rounded-3xl p-6 text-white transition hover:brightness-105"
-            style="background: linear-gradient(135deg, #80b67e 0%, #5e9a64 100%); box-shadow: 0 12px 28px rgba(128,182,126,0.40);"
+            class="relative block mt-3 overflow-hidden rounded-3xl p-6 transition bg-olive"
         >
-            <div class="pointer-events-none absolute -top-3 -right-5 opacity-[0.18]">
-                <x-app-logo-icon mode="mono-light" class="size-[140px]" />
-            </div>
-            <span class="inline-flex items-center gap-1.5 rounded-full bg-white/20 px-2.5 py-1 text-[11px] font-bold tracking-[0.4px]">
+            <span class="inline-flex items-center gap-1.5 rounded-full bg-white/20 px-2.5 py-1 text-[11px] font-bold tracking-[0.4px]
+             text-verde-fuerte">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="size-3">
                     <path d="M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2 2-6z" />
                 </svg>
                 IA · 2 SEG
             </span>
-            <div class="mt-3.5 max-w-[240px] font-display text-[24px] font-medium leading-[1.15] tracking-[-0.4px]">
-                {{ __('Escanea y descubre la especie') }}
+            <div class="mt-3.5 max-w-[240px] font-display text-2xl font-bold text-verde-fuerte">
+                {{ __('Identifica ahora') }}
             </div>
-            <div class="mt-1.5 max-w-[240px] text-[13px] leading-[1.4] opacity-85">
-                {{ __('Sube una foto y deja que la IA haga el trabajo.') }}
+            <div class="mt-1.5 max-w-[240px] text-[13px] leading-[1.4] opacity-85 text-verde-fuerte">
+                {{ __('Sube o toma una foto y deja que la IA te ayude.') }}
             </div>
-            <span class="mt-4 inline-flex h-11 items-center gap-2 rounded-xl bg-white px-4 text-[14px] font-bold text-olive">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="size-[18px]">
-                    <path d="M4 8h3l2-2h6l2 2h3a1 1 0 011 1v9a1 1 0 01-1 1H4a1 1 0 01-1-1V9a1 1 0 011-1z" />
-                    <circle cx="12" cy="13" r="3.5" />
-                </svg>
+            <span class="mt-4 inline-flex h-11 items-center gap-2 rounded-xl bg-verde-fuerte px-4 text-[14px] font-bold text-white!">
+                <flux:icon.scan-search class="size-4" />
                 {{ __('Empezar a escanear') }}
             </span>
         </a>

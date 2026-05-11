@@ -40,6 +40,8 @@
     /* Legacy aliases used by existing item-sidebar component */
     --color-golden-pollen: #f9cb43;
     --color-vintage-grape: #3c3546;
+
+    --color-verde-fuerte: #376939;
 }
 
 @layer base {
