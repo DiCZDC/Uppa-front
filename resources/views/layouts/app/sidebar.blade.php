@@ -8,7 +8,7 @@
             <flux:sidebar.header>
                 <a href="{{ route('dashboard') }}" wire:navigate class="inline-flex items-center gap-2.5">
                     <x-app-logo-icon mode="color" class="size-9" />
-                    <span class="font-display text-[18px] font-medium tracking-[-0.3px] text-ink">MicoScan</span>
+                    <span class="font-display text-[18px] font-medium tracking-[-0.3px] text-ink">Úppa</span>
                 </a>
                 <flux:sidebar.collapse class="lg:hidden" />
             </flux:sidebar.header>
@@ -40,7 +40,7 @@
 
             <a href="{{ route('dashboard') }}" wire:navigate class="inline-flex items-center gap-2">
                 <x-app-logo-icon mode="color" class="size-7" />
-                <span class="font-display text-[16px] font-medium tracking-[-0.3px] text-ink">MicoScan</span>
+                <span class="font-display text-[16px] font-medium tracking-[-0.3px] text-ink">Úppa</span>
             </a>
 
             <flux:spacer />

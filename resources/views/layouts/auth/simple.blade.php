@@ -19,7 +19,7 @@
 
             <a href="{{ route('home') }}" class="mt-7 inline-flex items-center gap-3" wire:navigate>
                 <x-app-logo-icon mode="color" class="size-9" />
-                <span class="font-display text-[22px] font-medium tracking-[-0.4px] text-ink">MicoScan</span>
+                <span class="font-display text-[22px] font-medium tracking-[-0.4px] text-ink">Úppa</span>
             </a>
 
             <div class="mt-8">

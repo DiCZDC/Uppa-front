@@ -2,7 +2,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <title>
-    {{ filled($title ?? null) ? $title.' - '.config('app.name', 'MicoScan') : config('app.name', 'MicoScan') }}
+    {{ filled($title ?? null) ? $title.' - '.config('app.name', 'Úppa') : config('app.name', 'Úppa') }}
 </title>
 
 <link rel="icon" href="/favicon.ico" sizes="any">

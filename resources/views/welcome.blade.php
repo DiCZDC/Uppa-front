@@ -35,7 +35,7 @@
         <div class="relative z-10 flex flex-1 flex-col items-center justify-center px-8 pt-20 pb-12 text-center">
             <x-app-logo-icon mode="color" class="size-[120px]" />
             <h1 class="mt-7 font-display text-[44px] font-medium leading-none tracking-[-1px] text-cream">
-                MicoScan
+                Úppa
             </h1>
             <p class="mt-4 max-w-[280px] text-[15px] leading-[1.5] text-cream/70">
                 Identifica hongos comestibles y detecta enfermedades con inteligencia artificial.
