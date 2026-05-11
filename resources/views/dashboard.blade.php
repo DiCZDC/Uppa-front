@@ -15,7 +15,7 @@
         </div>
 
         {{-- Hero scan card --}}
-        <div class="relative mt-3 flex flex-col overflow-hidden rounded-3xl bg-verde-claro p-6 transition">
+        <div class="relative mt-3 flex flex-col overflow-hidden rounded-3xl bg-verde-claro! p-6 transition">
             <div>
                 <flux:badge 
                 {{-- class="text-white! bg-verde-fuerte!"  --}}

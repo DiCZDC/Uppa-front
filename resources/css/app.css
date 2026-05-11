@@ -51,7 +51,7 @@
 
     --color-verde-fuerte: #376939;
     --color-verde-claro: #cdf9e3;
-    -color-verde-oscuro: #016630;
+    --color-verde-oscuro: #016630;
 }
 
 @layer base {
