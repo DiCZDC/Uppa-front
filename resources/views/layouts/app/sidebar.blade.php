@@ -20,6 +20,7 @@
                     </flux:sidebar.item>
 
                     <x-item-sidebar icon="aperture" icon-hover="aperture" ruta="reconocimiento.index" texto="Reconocimiento" />
+                    <x-item-sidebar icon="chart-network" icon-hover="chart-bar" ruta="graficas.index" texto="Gráficas" />
                 </flux:sidebar.group>
             </flux:sidebar.nav>
 
