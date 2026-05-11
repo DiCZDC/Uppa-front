@@ -283,11 +283,12 @@
             {{-- Hero --}}
             <div class="relative h-56" style="background: linear-gradient(135deg, #9a9080 0%, #6a6055 100%);">
                 <div class="absolute inset-0" style="background: repeating-linear-gradient(45deg, rgba(255,255,255,0.04) 0 2px, transparent 2px 8px);"></div>
-                <svg viewBox="0 0 120 120" preserveAspectRatio="xMidYMax meet" class="absolute inset-0 size-full opacity-70">
-                    <ellipse cx="60" cy="60" rx="38" ry="22" fill="#b8a890" />
-                    <rect x="50" y="58" width="20" height="38" rx="6" fill="rgba(255,255,255,0.85)" />
-                    <ellipse cx="60" cy="60" rx="38" ry="6" fill="rgba(0,0,0,0.18)" />
-                </svg>
+                <img
+                        x-show="mode !== 'camera'"
+                        src="{{ $foto->temporaryUrl() }}"
+                        alt="{{ __('Vista previa') }}"
+                        class="absolute inset-0 size-full object-cover"
+                    />
                 <div class="absolute inset-0" style="background: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, transparent 30%, transparent 60%);"></div>
 
                 <div class="absolute left-5 -bottom-3.5 flex flex-wrap gap-2">
