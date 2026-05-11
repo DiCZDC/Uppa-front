@@ -1,0 +1,4 @@
+https://10.232.163.108 {
+    tls C:\Innova\front\Uppa-front\10.232.163.108.pem C:\Innova\front\Uppa-front\10.232.163.108-key.pem
+    reverse_proxy http://10.232.163.108:8080
+}
