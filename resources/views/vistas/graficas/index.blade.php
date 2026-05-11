@@ -117,6 +117,7 @@
  
     Chart.defaults.font.family  = FONT_FAMILY;
     Chart.defaults.color        = MS.ink2;
+    
  
     /* Helpers de tooltip */
     const tooltipDefaults = {
