@@ -15,37 +15,32 @@
         </div>
 
         {{-- Hero scan card --}}
-        <a
-            href="{{ route('reconocimiento.index') }}"
-            wire:navigate
-            class="relative block mt-3 overflow-hidden rounded-3xl p-6 transition bg-olive"
-        >
-            <span class="inline-flex items-center gap-1.5 rounded-full bg-white/20 px-2.5 py-1 text-[11px] font-bold tracking-[0.4px]
-             text-verde-fuerte">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="size-3">
-                    <path d="M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2 2-6z" />
-                </svg>
-                IA · 2 SEG
-            </span>
+        <div class="relative mt-3 flex flex-col overflow-hidden rounded-3xl bg-verde-claro p-6 transition">
+            <div>
+                <flux:badge 
+                {{-- class="text-white! bg-verde-fuerte!"  --}}
+                color="lime" size="sm" icon="clock-alert">En menos de 10 segundos!</flux:badge>
+            </div>
             <div class="mt-3.5 max-w-[240px] font-display text-2xl font-bold text-verde-fuerte">
                 {{ __('Identifica ahora') }}
             </div>
             <div class="mt-1.5 max-w-[240px] text-[13px] leading-[1.4] opacity-85 text-verde-fuerte">
                 {{ __('Sube o toma una foto y deja que la IA te ayude.') }}
             </div>
-            <span class="mt-4 inline-flex h-11 items-center gap-2 rounded-xl bg-verde-fuerte px-4 text-[14px] font-bold text-white!">
-                <flux:icon.scan-search class="size-4" />
-                {{ __('Empezar a escanear') }}
-            </span>
-        </a>
+            <div class="mt-4 h-11">
+                <flux:button href="{{ route('reconocimiento.index') }}"
+                 class="text-white! bg-verde-fuerte! text-sm! font-semibold rounded-xl shadow-none! border-none!" 
+                icon="scan-search">Empezar a escanear</flux:button>
+            </div>
+        </div>
 
         {{-- How it works --}}
         <section class="pt-7">
             <div class="flex items-baseline justify-between">
-                <h2 class="font-display text-[19px] font-medium tracking-[-0.3px] text-ink">
-                    {{ __('Cómo funciona') }}
+                <h2 class="font-display font-semibold text-xl text-ink">
+                    {{ __('Cómo comenzar') }}
                 </h2>
-                <span class="text-[12px] text-ink-3">{{ __('3 pasos') }}</span>
+                <span class="text-[12px] text-ink-3">{{ __('En solo 3 pasos') }}</span>
             </div>
 
             <div class="mt-3 flex flex-col gap-2.5">
@@ -96,7 +91,7 @@
         {{-- Recent identifications (placeholder grid — design-only) --}}
         <section class="pt-7">
             <div class="flex items-baseline justify-between">
-                <h2 class="font-display text-[19px] font-medium tracking-[-0.3px] text-ink">
+                <h2 class="font-display font-semibold text-xl text-ink">
                     {{ __('Identificaciones recientes') }}
                 </h2>
                 <a href="{{ route('reconocimiento.index') }}" wire:navigate class="text-[12px] font-bold text-olive">
@@ -106,34 +101,107 @@
 
             @php
                 $recent = [
-                    ['name' => 'Cantharellus cibarius', 'com' => __('Rebozuelo'), 'status' => 'sano', 'tone' => ['#caa050', '#8a6a2a', '#e4b35a'], 'image' => 'https://upload.wikimedia.org/wikipedia/commons/a/aa/2007-07-14_Cantharellus_cibarius.jpg'],
-                    ['name' => 'Boletus edulis',        'com' => __('Boleto'),    'status' => 'sano', 'tone' => ['#8a6a4a', '#5a4030', '#a07a52'], 'image' => 'https://upload.wikimedia.org/wikipedia/commons/b/b0/Boletus_edulis_EtgHollande_041031_091.jpg'],
-                    ['name' => 'Pleurotus ostreatus',   'com' => __('Ostra'),     'status' => 'plaga','tone' => ['#9a9080', '#6a6055', '#b8a890'], 'image' => 'https://www.amanitacesarea.com/imagenes/pleurotus/ostreatus9.jpg'],
-                    ['name' => 'Morchella esculenta',   'com' => __('Colmenilla'),'status' => 'sano', 'tone' => ['#6a5238', '#3a2a1a', '#7a5a3a'], 'image' => 'https://www.amanitacesarea.com/imagenes/morchella/esculenta1.jpg'],
+                    ['name' => 'Cantharellus cibarius', 'date' => '13-04-2026', 'com' => __('Rebozuelo'), 'status' => 'sano', 'tone' => ['#caa050', '#8a6a2a', '#e4b35a'], 'image' => 'https://upload.wikimedia.org/wikipedia/commons/a/aa/2007-07-14_Cantharellus_cibarius.jpg'],
+                    ['name' => 'Boletus edulis',        'date' => '22-04-2026', 'com' => __('Boleto'),    'status' => 'sano', 'tone' => ['#8a6a4a', '#5a4030', '#a07a52'], 'image' => 'https://upload.wikimedia.org/wikipedia/commons/b/b0/Boletus_edulis_EtgHollande_041031_091.jpg'],
+                    ['name' => 'Agaricus bisporus',     'date' => '05-05-2026', 'com' => __('Champiñón blanco'),     'status' => 'plaga','tone' => ['#9a9080', '#6a6055', '#b8a890'], 'image' => 'https://extension.psu.edu/media/wysiwyg//extensions/catalog_product/9452fdf2a9104600895c1de77aa2f669/m/u/mushroom-infected-with-verticillium-dry-bubble-showing-split-stem-symptom.jpg'],
+                    ['name' => 'Morchella esculenta',   'date' => '10-05-2026', 'com' => __('Colmenilla'),'status' => 'sano', 'tone' => ['#6a5238', '#3a2a1a', '#7a5a3a'], 'image' => 'https://www.amanitacesarea.com/imagenes/morchella/esculenta1.jpg'],
                 ];
             @endphp
 
-            <div class="mt-3 grid grid-cols-1 gap-2.5">
+            <div class="mt-3 flex flex-col gap-5">
                 @foreach ($recent as $m)
-                    <div class="overflow-hidden rounded-2xl border border-line-2 bg-card">
+                    <div class="overflow-hidden rounded-2xl border border-line-2 bg-card px-9 pt-8 pb-4">
                         
-                        <div
-                            class="relative"
-                        
-                        >
-                            <img src="{{ $m['image'] }}" width="100%"  alt="{{ $m['name'] }}">
+                        <div class="relative rounded-2xl ">
+                                <img class="relative z-0 block w-full rounded-2xl!" src="{{ $m['image'] }}" width="100%"  alt="{{ $m['name'] }}">
+                            @if ($m['status'] === 'sano')
+                                    <span class="absolute right-3 top-3 z-20">
+                                        <flux:badge class="relative overflow-visible !bg-verde-claro !text-[#016630]">
+                                        {{ __('Sano') }}
+                                        <span class="pointer-events-none absolute -right-1 -top-1 flex size-2.5">
+                                            <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>
+                                            <span class="relative inline-flex size-2.5 rounded-full bg-green-500"></span>
+                                        </span>
+                                    </flux:badge>
+                                </span>
+                            @else
+                                <span class="absolute right-3 top-3 z-20">
+                                    <flux:badge class="relative overflow-visible bg-[#ffe0e1]! text-[#c20006]! ">
+                                        {{ __('Plaga detectada') }}
+                                        <span class="pointer-events-none absolute -right-1 -top-1 flex size-2.5">
+                                            <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-400 opacity-75"></span>
+                                            <span class="relative inline-flex size-2.5 rounded-full bg-red-500"></span>
+                                        </span>
+                                    </flux:badge>
+                                </span>
+                            @endif
                         </div>
-                        <div class="p-2.5 h-30">
-                            <div class="truncate font-display text-[13px] font-medium italic leading-[1.2] text-ink">
-                                {{ $m['name'] }}
-                            </div>
-                            <div class="mt-0.5 text-[11px] text-ink-3">{{ $m['com'] }}</div>
-                            <div class="mt-1.5 flex items-center gap-1.5">
-                                <span class="size-1.5 rounded-full {{ $m['status'] === 'sano' ? 'bg-olive' : 'bg-pink' }}"></span>
-                                <span class="text-[11px] font-semibold {{ $m['status'] === 'sano' ? 'text-olive' : 'text-pink' }}">
-                                    {{ $m['status'] === 'sano' ? __('Sano') : __('Plaga detectada') }}
+
+                        <div class="mt-5 p-2.5 flex flex-col items-start justify-center gap-2.5 text-ink">
+                            
+                            <div class="flex justify-start items-center gap-3 truncate font-display text-sm font-normal leading-[1.2] max-[540px]:flex-col max-[540px]:items-start max-[540px]:gap-1.5 max-[540px]:!whitespace-normal max-[540px]:!overflow-visible max-[540px]:!text-clip">
+                               <span class="inline-flex gap-1.5 items-center">
+                                    <flux:icon.book-marked class="size=3"/>
+                                    Nombre comun:  
+                                </span>  
+                               <span class="italic font-medium ">
+                                    <flux:badge color="yellow">
+                                    {{ $m['com'] }}
+                                    </flux:badge>
                                 </span>
                             </div>
+                            
+                            <div class="flex justify-start items-center gap-3 truncate font-display text-sm font-normal leading-[1.2] max-[540px]:flex-col max-[540px]:items-start max-[540px]:gap-1.5 max-[540px]:!whitespace-normal max-[540px]:!overflow-visible max-[540px]:!text-clip">
+                               <span class="inline-flex gap-1.5 items-center">
+                                    <flux:icon.flask-conical class="size=3"/>
+                                    Nombre cientifico:  
+                                </span>  
+                               <span class="italic font-medium ">
+                                    <flux:badge color="lime">
+                                    {{ $m['name'] }}
+                                    </flux:badge>
+                                </span>
+                            </div>
+
+                            @if ($m['status'] !== 'sano')
+                                <div class="flex justify-start items-center gap-3 truncate font-display text-sm font-normal leading-[1.2] max-[540px]:flex-col max-[540px]:items-start max-[540px]:gap-1.5 max-[540px]:!whitespace-normal max-[540px]:!overflow-visible max-[540px]:!text-clip">
+                                   <span class="inline-flex gap-1.5 items-center">
+                                        <flux:icon.activity class="size=3"/>
+                                        Nombre común de la enfermedad:  
+                                    </span>  
+                                   <span class="italic font-medium ">
+                                        <flux:badge color="red">
+                                        Verticillium
+                                        </flux:badge>
+                                    </span>
+                                </div>
+
+                                <div class="flex justify-start items-center gap-3 truncate font-display text-sm font-normal leading-[1.2] max-[540px]:flex-col max-[540px]:items-start max-[540px]:gap-1.5 max-[540px]:!whitespace-normal max-[540px]:!overflow-visible max-[540px]:!text-clip">
+                                   <span class="inline-flex gap-1.5 items-center">
+                                        <flux:icon.stethoscope class="size=3"/>
+                                        Nombre científico de la enfermedad :  
+                                    </span>  
+                                   <span class="italic font-medium ">
+                                        <flux:badge color="red">
+                                        Burbuja Seca
+                                        </flux:badge>
+                                    </span>
+                                </div>
+                            @endif
+
+                            <div class="flex justify-start items-center gap-3 truncate font-display text-sm font-normal leading-[1.2] max-[540px]:flex-col max-[540px]:items-start max-[540px]:gap-1.5 max-[540px]:!whitespace-normal max-[540px]:!overflow-visible max-[540px]:!text-clip">
+                               <span class="inline-flex gap-1.5 items-center">
+                                    <flux:icon.calendar-fold class="size=3"/>
+                                    Fecha de análisis:  
+                                </span>  
+                               <span class="italic font-medium ">
+                                    <flux:badge color="zinc">
+                                    {{ $m['date'] }}
+                                    </flux:badge>
+                                </span>
+                            </div>
+
+
                         </div>
                     </div>
                 @endforeach
