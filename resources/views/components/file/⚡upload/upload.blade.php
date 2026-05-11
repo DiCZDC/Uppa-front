@@ -8,11 +8,10 @@
             wire:target="analizar"
         >
             <div
-                class="relative aspect-[4/5] w-full max-w-md overflow-hidden rounded-3xl border border-white/10 text-cream"
-                style="background: radial-gradient(80% 60% at 50% 60%, #4a5a32 0%, #2a341e 60%, #0e1408 100%);"
+                class="relative aspect-[4/5] w-full max-w-md overflow-hidden rounded-3xl border border-white/10 text-cream bg-[url('https://cdn.pixabay.com/photo/2013/06/05/22/03/mushrooms-116973_1280.jpg')] bg-cover bg-center"
             >
                 {{-- Texture --}}
-                <div class="pointer-events-none absolute inset-0" style="background: repeating-linear-gradient(45deg, rgba(255,255,255,0.025) 0 2px, transparent 2px 8px);"></div>
+                <div class="pointer-events-none absolute inset-0"></div>
 
                 {{-- Live camera feed --}}
                 <video
