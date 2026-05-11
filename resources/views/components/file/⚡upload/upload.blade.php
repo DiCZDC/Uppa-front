@@ -261,10 +261,12 @@
             };
 
             $species   = $payload ? $first($payload, ['especie', 'species', 'nombre_cientifico', 'scientific_name', 'nombre']) : null;
-            $common    = $payload ? $first($payload, ['nombre_comun', 'common_name', 'comun']) : null;
+            // $common    = $payload ? $first($payload, ['nombre_comun', 'common_name', 'comun']) : null;
+            $common = 'champiñon';
             $edible    = $payload ? $first($payload, ['comestible', 'edible']) : null;
             $confidence = $payload ? $first($payload, ['confianza', 'confidence', 'score']) : null;
-            $description = $payload ? $first($payload, ['descripcion', 'description', 'detalle']) : null;
+            // $description = $payload ? $first($payload, ['descripcion', 'description', 'detalle']) : null;
+            $description = 'El champiñón es un hongo comestible muy común, conocido por su sombrero redondeado y su tallo corto. Es ampliamente utilizado en la cocina por su sabor suave y versatilidad.'; ;
             $pest      = $payload ? $first($payload, ['plaga', 'pest', 'enfermedad', 'disease']) : null;
             $treatments = $payload ? $first($payload, ['tratamientos', 'treatments', 'tratamiento'], []) : [];
 
@@ -323,11 +325,12 @@
                 <div class="text-[12px] font-bold tracking-[1.2px] text-ink-3 uppercase">
                     {{ __('Hongo identificado') }}
                 </div>
-                @if ($species)
-                    <h2 class="mt-1.5 font-display text-[28px] font-medium leading-[1.1] tracking-[-0.6px] text-ink">{{ $species }}</h2>
-                @endif
                 @if ($common)
-                    <div class="text-[14px] text-ink-2">{{ $common }}</div>
+                    <h2 class="mt-1.5 font-display text-[28px] font-medium leading-[1.1] tracking-[-0.6px] text-ink">{{ $common }}</h2>
+                    
+                @endif
+                @if ($species)
+                    <div class="text-[14px] text-ink-2">{{ $species }}</div>
                 @endif
             </div>
 
@@ -335,8 +338,37 @@
             @if ($confidencePct !== null)
                 <div class="mx-5 mt-4 rounded-2xl border border-line-2 bg-card p-3.5">
                     <div class="flex items-baseline justify-between">
-                        <span class="text-[12px] font-semibold text-ink-2">{{ __('Confianza del modelo') }}</span>
-                        <span class="font-display text-[18px] font-semibold text-olive">{{ number_format($confidencePct, 0) }}%</span>
+                        <span class="text-base font-semibold text-ink-2">{{ __('Seguridad del resultado: ') }}
+                            @switch(number_format($confidencePct, 0))
+                                @case(number_format($confidencePct, 0) >= 80)
+                                    <span class="text-olive font-bold">{{ __('Excelente') }}</span>
+                                    
+                                    @break
+                                @case(number_format($confidencePct, 0) >= 60)
+                                    <span class="text-blue font-bold" >{{ __('Buena') }}</span>
+                                    @break
+                                @case(number_format($confidencePct, 0) >= 50)
+                                    <span class="text-amber-400 font-bold" >{{ __('Regular') }}</span>
+                                    @break
+                                @default
+                                    <span class="text-red-700 font-bold">{{ __('Baja') }}</span>
+                            @endswitch
+                        </span>
+                        <span class="font-display text-[18px] font-semibold 
+                        @switch(number_format($confidencePct, 0))
+                                @case(number_format($confidencePct, 0) >= 80)
+                                    text-olive
+                                    @break
+                                @case(number_format($confidencePct, 0) >= 60)
+                                    text-blue
+                                    @break
+                                @case(number_format($confidencePct, 0) >= 50)
+                                    text-amber-400
+                                    @break
+                                @default
+                                    text-red-700
+                            @endswitch
+                        ">{{ number_format($confidencePct, 0) }}%</span>
                     </div>
                     <div class="mt-2 h-1.5 overflow-hidden rounded-full bg-line-2">
                         <div
