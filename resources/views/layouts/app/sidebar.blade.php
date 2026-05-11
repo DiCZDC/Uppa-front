@@ -1,43 +1,47 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="dark">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         @include('partials.head')
     </head>
-    <body class="min-h-screen bg-white dark:bg-zinc-800">
-        <flux:sidebar sticky collapsible="mobile" class="border-e border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900">
+    <body class="min-h-screen bg-bg text-ink">
+        <flux:sidebar sticky collapsible="mobile" class="border-e border-line bg-card/70 backdrop-blur">
             <flux:sidebar.header>
-                <x-app-logo :sidebar="true" href="{{ route('dashboard') }}" wire:navigate />
+                <a href="{{ route('dashboard') }}" wire:navigate class="inline-flex items-center gap-2.5">
+                    <x-app-logo-icon mode="color" class="size-9" />
+                    <span class="font-display text-[18px] font-medium tracking-[-0.3px] text-ink">Úppa</span>
+                </a>
                 <flux:sidebar.collapse class="lg:hidden" />
             </flux:sidebar.header>
 
             <flux:sidebar.nav>
-                <flux:sidebar.group :heading="__('Platform')" class="grid">
+                <flux:sidebar.group :heading="__('Navegación')" class="grid">
                     <flux:sidebar.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>
-                        {{ __('Dashboard') }}
+                        {{ __('Inicio') }}
                     </flux:sidebar.item>
 
-                    <x-item-sidebar icon="projector" icon-hover="aperture" ruta="reconocimiento.index" texto="Reconocimiento" />
+                    <x-item-sidebar icon="aperture" icon-hover="aperture" ruta="reconocimiento.index" texto="Reconocimiento" />
                 </flux:sidebar.group>
             </flux:sidebar.nav>
 
             <flux:spacer />
 
             <flux:sidebar.nav>
-                <flux:sidebar.item icon="folder-git-2" href="https://github.com/laravel/livewire-starter-kit" target="_blank">
-                    {{ __('Repository') }}
-                </flux:sidebar.item>
-
                 <flux:sidebar.item icon="book-open-text" href="https://laravel.com/docs/starter-kits#livewire" target="_blank">
-                    {{ __('Documentation') }}
+                    {{ __('Documentación') }}
                 </flux:sidebar.item>
             </flux:sidebar.nav>
 
             <x-desktop-user-menu class="hidden lg:block" :name="auth()->user()->name" />
         </flux:sidebar>
 
-        <!-- Mobile User Menu -->
-        <flux:header class="lg:hidden">
+        {{-- Mobile header --}}
+        <flux:header class="lg:hidden border-b border-line bg-card/80 backdrop-blur">
             <flux:sidebar.toggle class="lg:hidden" icon="bars-2" inset="left" />
+
+            <a href="{{ route('dashboard') }}" wire:navigate class="inline-flex items-center gap-2">
+                <x-app-logo-icon mode="color" class="size-7" />
+                <span class="font-display text-[16px] font-medium tracking-[-0.3px] text-ink">Úppa</span>
+            </a>
 
             <flux:spacer />
 
@@ -68,7 +72,7 @@
 
                     <flux:menu.radio.group>
                         <flux:menu.item :href="route('profile.edit')" icon="cog" wire:navigate>
-                            {{ __('Settings') }}
+                            {{ __('Ajustes') }}
                         </flux:menu.item>
                     </flux:menu.radio.group>
 
@@ -83,7 +87,7 @@
                             class="w-full cursor-pointer"
                             data-test="logout-button"
                         >
-                            {{ __('Log out') }}
+                            {{ __('Cerrar sesión') }}
                         </flux:menu.item>
                     </form>
                 </flux:menu>
