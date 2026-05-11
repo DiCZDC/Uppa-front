@@ -9,6 +9,14 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
+    
+    --breakpoint-xs: 469px;
+    --breakpoint-sm: 640px;
+    --breakpoint-md: 769px;
+    --breakpoint-lg: 1025px;
+    --breakpoint-xl: 1280px;
+    --breakpoint-2xl: 1536px;
+    
     /* Typography */
     --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
     --font-display: 'Fraunces', 'Times New Roman', serif;
@@ -40,6 +48,10 @@
     /* Legacy aliases used by existing item-sidebar component */
     --color-golden-pollen: #f9cb43;
     --color-vintage-grape: #3c3546;
+
+    --color-verde-fuerte: #376939;
+    --color-verde-claro: #cdf9e3;
+    -color-verde-oscuro: #016630;
 }
 
 @layer base {
