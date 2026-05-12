@@ -1,42 +1,86 @@
 <x-layouts::app :title="__('Reconocimiento')">
     <div class="mx-auto w-full max-w-3xl px-5 pt-2 pb-12">
-        <div class="pb-8.5 flex flex-col gap-5 w-full ">
-            
-            <div class="inline-flex gap-3 justify-center items-center mb-0.5">
+        
+        <div class="mb-8 flex flex-col gap-5">
+             <div class="inline-flex gap-3 justify-center items-center  text-ink">
                 
-                <div class="flex items-center">
-                    <svg height="22px" width="22px" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" 
-                    xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve" fill="#000000">
-                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                    <g id="SVGRepo_iconCarrier"> <style type="text/css"> .st0{fill:#000000;} </style> <g> 
-                        <path class="st0" d="M193.945,399.491c0,26.182,0,45.436,0,59.754c0,27.928,12.4,52.755,62.054,52.755 c49.655,0,62.054-24.827,62.054-52
-                        .755c0-14.318,0-33.572,0-59.754c-20,2.509-40.727,3.9-62.054,3.9 C234.673,403.391,213.945,402,193.945,399.491z"></path> 
-                        <path class="st0" d="M493.382,203.663C446.836,123.973,367.709,0,256,0C144.291,0,65.164,123.973,18.618,203.663 
-                        c-46.546,79.701,60.509,171.8,237.382,171.8C432.873,375.464,539.927,283.364,493.382,203.663z M106.673,279.273
-                        c-24.637,0-44.609-19.973-44.609-44.6c0-24.646,19.972-44.609,44.609-44.609c24.627,0,44.6,19.964,44.6,44.609 
-                        C151.273,259.3,131.3,279.273,106.673,279.273z M194.718,127.618c0-28.5,23.1-51.591,51.591-51.591 c28.481,0,51.582,23.091,51.
-                        582,51.591c0,28.482-23.101,51.582-51.582,51.582C217.818,179.2,194.718,156.1,194.718,127.618z M282.764,328.146c-21.209,0-38.4-
-                        17.191-38.4-38.4c0-21.209,17.191-38.4,38.4-38.4c21.209,0,38.4,17.191,38.4,38.4 C321.164,310.954,303.973,328.146,282.764,328.146z
-                        M421.009,262.7c-22.174-3.59-38.492-25.064-34.964-46.891 c3.401-20.991,23.691-32.208,44.054-26.172c18.955,5.627,32.046,24.618,30.3
-                        28,43.337 C458.645,252.345,441.554,266.027,421.009,262.7z"></path> </g> </g>
-                    </svg>
-                </div>
-                
+                <flux:icon.scan-qr-code class="size-8" />
             
-                <h1 class="mt-1.5 font-display text-[28px] font-medium leading-[1.1] tracking-[-0.6px] text-ink">
-                    {{ __('Escanea un hongo') }}
+                <h1 class="mt-1 font-display font-bold text-2xl">
+                    {{ __('¡Escanea tu hongo ahora!') }}
                 </h1>
             </div>
-            
 
-            <flux:callout icon="fullscreen" color="green">
-                <flux:callout.heading>Sube una foto del ejemplar bien iluminado.</flux:callout.heading>
-                <flux:callout.text>
-                    La IA identificará la especie, posibles plagas y tratamientos.
-                </flux:callout.text>
-            </flux:callout>
+            <livewire:file.upload />
         </div>
 
-        <livewire:file.upload />
+        <div class="pb-8.5 flex flex-col gap-5 w-full ">
+            
+            <div class="inline-flex gap-3 justify-center items-center mb-0.5 text-ink">
+                
+                <flux:icon.camera variant="solid" class="size-8" />
+            
+                <h1 class="mt-1 font-display font-bold text-2xl">
+                    {{ __('Consejos para una buena foto') }}
+                </h1>
+            </div>
+
+
+            
+            <div class="flex flex-col gap-3">
+
+                <flux:callout class="bg-[#ffeebf]! text-[#ba4e00]! border-none!">
+                    <x-slot name="icon">
+                        <flux:icon.key-round class="size-5" />
+                    </x-slot>
+                    <flux:callout.heading class="text-[#ba4e00]!">Permisos de cámara</flux:callout.heading>
+                    <flux:callout.text class="text-[#ba4e00]!">
+                        <p>Asegúrate de otorgar permisos a tu navegador para acceder a la cámara y poder tomar fotos.</p>
+                    </flux:callout.text>
+                </flux:callout>
+
+                <flux:callout class="bg-[#ccf2ff]! border-none!">
+                    <x-slot name="icon">
+                        <flux:icon.sun class="size-7 text-[#193cbf]!" />
+                    </x-slot>
+                    <flux:callout.heading class="text-[#193cbf]!">Buena iluminación</flux:callout.heading>
+                    <flux:callout.text class="text-[#193cbf]!">
+                        <p>Busca luz natural e indirecta. Evita usar flash.</p>
+                    </flux:callout.text>
+                </flux:callout>
+
+                <flux:callout class="bg-[#f2f7f2]! border-none!">
+                    <x-slot name="icon">
+                        <flux:icon.eye class="size-5 text-[#80b67e]!" />
+                    </x-slot>
+                    <flux:callout.heading class="text-[#80b67e]!">Posición y enfoque</flux:callout.heading>
+                    <flux:callout.text class="text-[#80b67e]!">
+                        <p>Acércate para que el hongo ocupe la mayor parte de la imagen, asegurando un enfoque nítido.</p>
+                    </flux:callout.text>
+                </flux:callout>
+
+                <flux:callout class="bg-[#faebeb]! border-none!">
+                    <x-slot name="icon">
+                        <flux:icon.sparkles class="size-5 text-[#cb3434]!" />
+                    </x-slot>
+                    <flux:callout.heading class="text-[#cb3434]!">Limpia tu lente</flux:callout.heading>
+                    <flux:callout.text class="text-[#cb3434]!">
+                        <p>Un lente limpio previene fotos borrosas e incrementa significativamente la precisión del reconocimiento.</p>
+                    </flux:callout.text>
+                </flux:callout>
+
+                <flux:callout class="bg-[#f3e8ff]! border-none!">
+                    <x-slot name="icon">
+                        <flux:icon.magnifying-glass-plus class="size-5 text-[#7e22ce]!" />
+                    </x-slot>
+                    <flux:callout.heading class="text-[#7e22ce]!">Captura los detalles clave</flux:callout.heading>
+                    <flux:callout.text class="text-[#7e22ce]!">
+                        <p>Intenta incluir la parte superior del sombrero y, si es visible, las láminas o poros debajo del mismo.</p>
+                    </flux:callout.text>
+                </flux:callout>
+                
+            </div>
+
+        </div>
     </div>
 </x-layouts::app>

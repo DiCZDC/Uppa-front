@@ -133,25 +133,12 @@
                 <div class="flex flex-col gap-3 rounded-2xl bg-card p-4 border border-line-2">
                     {{-- Mode toggle --}}
                     <div class="flex gap-2">
-                        <button
-                            type="button"
-                            @click="stopCamera(); mode = 'file'"
-                            :class="mode === 'file' ? 'bg-olive text-white' : 'bg-olive/10 text-olive'"
-                            class="flex flex-1 items-center justify-center gap-2 rounded-xl py-2 text-sm font-semibold transition"
-                        >
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4">
-                                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
-                                <polyline points="17 8 12 3 7 8" />
-                                <line x1="12" y1="3" x2="12" y2="15" />
-                            </svg>
-                            {{ __('Subir archivo') }}
-                        </button>
+                        
                         <button
                             type="button"
                             @click="startCamera"
                             :class="mode === 'camera' ? 'bg-olive text-white' : 'bg-olive/10 text-olive'"
-                            class="flex flex-1 items-center justify-center gap-2 rounded-xl py-2 text-sm font-semibold transition"
-                        >
+                            class="flex flex-1 items-center justify-center gap-2 rounded-xl py-2 text-sm font-semibold transition">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4">
                                 <path d="M23 7l-7 5 7 5V7z" />
                                 <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
@@ -198,7 +185,7 @@
                 @endif
 
                 <div class="flex flex-col gap-2.5 sm:flex-row">
-                    <button
+                    {{-- <button
                         type="submit"
                         @disabled(!$foto)
                         class="inline-flex h-[50px] flex-1 items-center justify-center gap-2 rounded-2xl bg-olive px-5 text-[15px] font-semibold text-white ms-shadow-cta transition hover:brightness-105 disabled:cursor-not-allowed disabled:opacity-50"
@@ -207,7 +194,13 @@
                             <path d="M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2 2-6z" />
                         </svg>
                         {{ __('Analizar foto') }}
-                    </button>
+                    </button> --}}
+
+                    <flux:button icon="scan" type="submit" variant="primary" class="w-full" :disabled="!$foto" 
+                                class="w-full bg-verde-fuerte! text-white! hover:bg-olive/90! disabled:bg-verde-claro! disabled:text-verde-fuerte! border-none!
+                                  disabled:cursor-not-allowed! transition!">
+                                 Analizar foto
+                    </flux:button>
                 </div>
             </form>
         </div>
