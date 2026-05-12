@@ -225,6 +225,8 @@
             $confidencePct = is_numeric($confianza)
                 ? (($confianza <= 1 && $confianza > 0) ? (float) $confianza * 100 : (float) $confianza)
                 : null;
+
+            $especieModel = $id_especie !== null ? \App\Models\Especie::find($id_especie) : null;
         @endphp
 
         <article class="overflow-hidden rounded-3xl border border-line-2 bg-card ms-shadow-card">
@@ -314,10 +316,73 @@
             @endif
 
             {{-- Message / Info --}}
-            @if ($mensaje)
+            @if ($especieModel || $mensaje)
                 <div class="mx-5 mt-4 rounded-2xl border border-line-2 bg-card p-4">
-                    <div class="font-display text-[16px] font-medium tracking-[-0.2px] text-ink">{{ __('Información') }}</div>
-                    <p class="mt-1.5 text-[13px] leading-[1.55] text-ink-2">{{ $mensaje }}</p>
+                    <div class="font-display text-[16px] font-medium tracking-[-0.2px] text-ink mb-3">{{ __('Información') }}</div>
+                    
+                    @if ($mensaje)
+                        <p class="text-[13px] leading-[1.55] text-ink-2 mb-4">{{ $mensaje }}</p>
+                    @endif
+
+                    @if ($especieModel)
+                        <div class="flex flex-col items-start justify-center gap-2.5 text-ink text-base">
+                            
+                            @if ($especieModel->nombre_comun)
+                            <div class="flex justify-start items-center gap-3 truncate font-display font-normal leading-[1.2] max-2xs:flex-col max-2xs:items-start max-2xs:gap-1.5 max-2xs:!whitespace-normal max-2xs:!overflow-visible max-2xs:!text-clip">
+                               <span class="inline-flex gap-1.5 items-center text-sm">
+                                    <flux:icon.book-marked class="size-3"/>
+                                    {{ __('Nombre común:') }}
+                                </span>  
+                               <span class="italic font-medium ">
+                                    <flux:badge color="yellow" size="sm" class="whitespace-normal text-left">
+                                    {{ $especieModel->nombre_comun }}
+                                    </flux:badge>
+                                </span>
+                            </div>
+                            @endif
+                            
+                            <div class="flex justify-start items-center gap-3 truncate font-display font-normal leading-[1.2] max-2xs:flex-col max-2xs:items-start max-2xs:gap-1.5 max-2xs:!whitespace-normal max-2xs:!overflow-visible max-2xs:!text-clip">
+                               <span class="inline-flex gap-1.5 items-center text-sm">
+                                    <flux:icon.folder-tree class="size-3"/>
+                                    {{ __('Familia:') }}
+                                </span>  
+                               <span class="italic font-medium ">
+                                    <flux:badge color="lime" size="sm" class="whitespace-normal text-left">
+                                    {{ $especieModel->familia }}
+                                    </flux:badge>
+                                </span>
+                            </div>
+
+                            @if ($especieModel->zonas_crecimiento)
+                            <div class="flex justify-start items-center gap-3 truncate font-display font-normal leading-[1.2] max-2xs:flex-col max-2xs:items-start max-2xs:gap-1.5 max-2xs:!whitespace-normal max-2xs:!overflow-visible max-2xs:!text-clip">
+                               <span class="inline-flex gap-1.5 items-center text-sm">
+                                    <flux:icon.globe class="size-3"/>
+                                    {{ __('Zonas:') }}
+                                </span>  
+                               <span class="italic font-medium ">
+                                    <flux:badge color="blue" size="sm" class="whitespace-normal text-left">
+                                    {{ $especieModel->zonas_crecimiento }}
+                                    </flux:badge>
+                                </span>
+                            </div>
+                            @endif
+
+                            @if ($especieModel->ambientes_comunes)
+                            <div class="flex justify-start items-center gap-3 truncate font-display font-normal leading-[1.2] max-2xs:flex-col max-2xs:items-start max-2xs:gap-1.5 max-2xs:!whitespace-normal max-2xs:!overflow-visible max-2xs:!text-clip">
+                               <span class="inline-flex gap-1.5 items-center text-sm">
+                                    <flux:icon.trees class="size-3"/>
+                                    {{ __('Ambientes:') }}
+                                </span>  
+                               <span class="italic font-medium ">
+                                    <flux:badge color="zinc" size="sm" class="whitespace-normal text-left">
+                                    {{ $especieModel->ambientes_comunes }}
+                                    </flux:badge>
+                                </span>
+                            </div>
+                            @endif
+
+                        </div>
+                    @endif
                 </div>
             @endif
 
