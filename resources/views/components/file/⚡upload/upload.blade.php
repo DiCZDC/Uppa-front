@@ -185,17 +185,6 @@
                 @endif
 
                 <div class="flex flex-col gap-2.5 sm:flex-row">
-                    {{-- <button
-                        type="submit"
-                        @disabled(!$foto)
-                        class="inline-flex h-[50px] flex-1 items-center justify-center gap-2 rounded-2xl bg-olive px-5 text-[15px] font-semibold text-white ms-shadow-cta transition hover:brightness-105 disabled:cursor-not-allowed disabled:opacity-50"
-                    >
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-[18px]">
-                            <path d="M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2 2-6z" />
-                        </svg>
-                        {{ __('Analizar foto') }}
-                    </button> --}}
-
                     <flux:button icon="scan" type="submit" variant="primary" class="w-full" :disabled="!$foto" 
                                 class="w-full bg-verde-fuerte! text-white! hover:bg-olive/90! disabled:bg-verde-claro! disabled:text-verde-fuerte! border-none!
                                   disabled:cursor-not-allowed! transition!">
@@ -210,53 +199,14 @@
     <div
         wire:loading
         wire:target="analizar"
-        class="w-full flex-col gap-6 overflow-hidden rounded-3xl p-7 text-cream flex"
-        style="background: radial-gradient(120% 80% at 50% 30%, #4a3f56 0%, #3c3546 60%, #1d1828 100%);"
+        class="w-full rounded-3xl bg-card p-7 border border-line-2 ms-shadow-card"
     >
-        <div class="relative">
-            <div class="aspect-[4/3] w-full overflow-hidden rounded-2xl" style="background: linear-gradient(135deg, #5a6a3f 0%, #3e4a2c 100%);">
-                <div class="absolute inset-0" style="background: repeating-linear-gradient(45deg, rgba(255,255,255,0.04) 0 2px, transparent 2px 8px);"></div>
-            </div>
-            <div
-                class="ms-scan-line pointer-events-none absolute left-0 right-0 top-0 h-0.5"
-                style="background: linear-gradient(90deg, transparent, #f9cb43, transparent); box-shadow: 0 0 16px #f9cb43, 0 0 32px rgba(249,203,67,0.5);"
-            ></div>
-        </div>
-
-        <div>
-            <span class="inline-flex items-center gap-1.5 rounded-full bg-gold/20 px-3 py-1.5 text-[11px] font-bold tracking-[1px] text-gold">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-3">
-                    <path d="M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2 2-6z" />
-                </svg>
-                {{ __('Analizando') }}
-            </span>
-            <h2 class="mt-3.5 font-display text-[26px] font-medium leading-[1.15] tracking-[-0.5px]">
-                {{ __('Identificando especie') }}...
-            </h2>
-        </div>
-
-        <div class="flex flex-col gap-2.5">
-            @foreach ([
-                ['label' => __('Procesando imagen'), 'state' => 'done'],
-                ['label' => __('Analizando características'), 'state' => 'loading'],
-            ] as $step)
-                <div class="flex items-center gap-2.5">
-                    @if ($step['state'] === 'done')
-                        <div class="flex size-5 items-center justify-center rounded-full bg-olive text-white">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="size-3">
-                                <path d="M5 12l4 4L19 6" />
-                            </svg>
-                        </div>
-                        <span class="text-[14px] font-medium text-cream">{{ $step['label'] }}</span>
-                    @elseif ($step['state'] === 'loading')
-                        <div class="ms-spin size-5 rounded-full border-2 border-gold border-t-transparent"></div>
-                        <span class="text-[14px] font-bold text-gold">{{ $step['label'] }}</span>
-                    @else
-                        <div class="size-5 rounded-full bg-white/10"></div>
-                        <span class="text-[14px] text-cream/45">{{ $step['label'] }}</span>
-                    @endif
-                </div>
-            @endforeach
+        <div x-data="{ progress: 0 }" x-init="setInterval(() => { progress = progress >= 95 ? 95 : progress + (Math.random() * 10) }, 300)">
+            <flux:field>
+                <flux:label class="text-lg font-semibold">{{ __('Identificando especie...') }}</flux:label>
+                <flux:progress ::value="progress" color="green" class="mt-2 mb-1" />
+                <flux:description>{{ __('Procesando imagen y analizando características') }}</flux:description>
+            </flux:field>
         </div>
     </div>
 
@@ -279,15 +229,15 @@
 
         <article class="overflow-hidden rounded-3xl border border-line-2 bg-card ms-shadow-card">
             {{-- Hero --}}
-            <div class="relative h-56" style="background: linear-gradient(135deg, #9a9080 0%, #6a6055 100%);">
-                <div class="absolute inset-0" style="background: repeating-linear-gradient(45deg, rgba(255,255,255,0.04) 0 2px, transparent 2px 8px);"></div>
-                <img
-                        x-show="mode !== 'camera'"
+            <div class="relative h-56 bg-olive/20">
+                
+                @if ($foto && method_exists($foto, 'temporaryUrl'))
+                    <img
                         src="{{ $foto->temporaryUrl() }}"
                         alt="{{ __('Vista previa') }}"
                         class="absolute inset-0 size-full object-cover"
                     />
-                <div class="absolute inset-0" style="background: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, transparent 30%, transparent 60%);"></div>
+                @endif
 
                 <div class="absolute left-5 -bottom-3.5 flex flex-wrap gap-2">
                     @if ($cultivada !== null)
@@ -383,20 +333,14 @@
 
             {{-- CTAs --}}
             <div class="flex flex-col gap-2.5 p-5 pt-6 sm:flex-row">
-                <button
-                    type="button"
-                    wire:click="$set('resultado', null)"
-                    class="inline-flex h-[50px] flex-1 items-center justify-center gap-2 rounded-2xl bg-olive px-5 text-[15px] font-semibold text-white ms-shadow-cta transition hover:brightness-105"
-                >
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-[18px]">
-                        <path d="M4 8h3l2-2h6l2 2h3a1 1 0 011 1v9a1 1 0 01-1 1H4a1 1 0 01-1-1V9a1 1 0 011-1z" />
-                        <circle cx="12" cy="13" r="3.5" />
-                    </svg>
-                    {{ __('Nuevo escaneo') }}
-                </button>
+                <flux:button wire:click="$set('resultado', null)" icon="scan-search" type="button" class="w-full" 
+                                class="w-full bg-verde-claro! text-verde-fuerte! border-none!">
+                                 Nuevo escaneo 
+                </flux:button>
             </div>
         </article>
     @endif
 </div>
+
 
 
