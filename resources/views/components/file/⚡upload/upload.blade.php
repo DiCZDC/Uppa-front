@@ -339,6 +339,55 @@
                 </flux:button>
             </div>
         </article>
+
+        @if (!$detectado || ($confidencePct !== null && $confidencePct < 60))
+                <div class="mx-5 mt-6 mb-2 bg-white p-5 rounded-2xl shadow-sm border border-line-2">
+                    <div class="inline-flex gap-3 items-center mb-4 text-ink">
+                        <flux:icon.camera variant="solid" class="size-6" />
+                        <h3 class="font-display font-bold text-2xl">
+                            {{ __('Toma una mejor foto') }} 
+                        </h3>
+                    </div>
+
+                    <div class="flex items-center mb-5 text-ink px-2">
+                        <h3 class="font-display font-bold text-xl text-pretty ">
+                            {{ __('Tu foto no es de alta calidad. ¡Aquí tienes algunos consejos para mejorar el reconocimiento!') }} 
+                        </h3>
+                    </div>
+                    
+                    <div class="flex flex-col gap-4">
+                        <flux:callout class="bg-[#f2f7f2]! border-none!">
+                            <x-slot name="icon">
+                                <flux:icon.magnifying-glass-plus class="size-5 text-[#80b67e]!" />
+                            </x-slot>
+                            <flux:callout.heading class="text-[#80b67e]!">Captura los detalles clave</flux:callout.heading>
+                            <flux:callout.text class="text-[#80b67e]!">
+                                <p>Intenta incluir la parte superior del sombrero y, si es visible, las láminas o poros debajo del mismo.</p>
+                            </flux:callout.text>
+                        </flux:callout>
+
+                        <flux:callout class="bg-[#ffeebf]! border-none!">
+                            <x-slot name="icon">
+                                <flux:icon.sparkles class="size-5 text-[#ba4e00]!" />
+                            </x-slot>
+                            <flux:callout.heading class="text-[#ba4e00]!">Limpia tu lente</flux:callout.heading>
+                            <flux:callout.text class="text-[#ba4e00]!">
+                                <p>Un lente limpio previene fotos borrosas e incrementa significativamente la precisión del reconocimiento.</p>
+                            </flux:callout.text>
+                        </flux:callout>
+                        
+                        <flux:callout class="bg-[#faebeb]! text-[#cb3434]! border-none!">
+                            <x-slot name="icon">
+                                <flux:icon.key-round class="size-5" />
+                            </x-slot>
+                            <flux:callout.heading class="text-[#cb3434]!">Enfoque</flux:callout.heading>
+                            <flux:callout.text class="text-[#cb3434]!">
+                                <p>Acércate para que el hongo ocupe la mayor parte de la imagen, asegurando un enfoque nítido.</p>
+                            </flux:callout.text>
+                        </flux:callout>
+                    </div>
+                </div>
+            @endif
     @endif
 </div>
 
