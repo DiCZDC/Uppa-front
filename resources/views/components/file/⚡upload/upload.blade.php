@@ -219,8 +219,12 @@
             $especie   = $payload['especie'] ?? null;
             $confianza = $payload['confianza'] ?? null;
             $cultivada = $payload['cultivada'] ?? null;
-            $mensaje   = $payload['mensaje'] ?? null;
+            $mensaje   = $payload['mensaje_especie'] ?? $payload['mensaje'] ?? null;
             $id_especie = $payload['id_especie'] ?? null;
+            
+            $sano = $payload['sano'] ?? true;
+            $estado = $payload['estado'] ?? 'sano';
+            $mensaje_salud = $payload['mensaje_salud'] ?? null;
 
             $confidencePct = is_numeric($confianza)
                 ? (($confianza <= 1 && $confianza > 0) ? (float) $confianza * 100 : (float) $confianza)
@@ -239,6 +243,28 @@
                         alt="{{ __('Vista previa') }}"
                         class="absolute inset-0 size-full object-cover"
                     />
+                @endif
+                
+                @if ($sano)
+                    <span class="absolute right-3 top-3 z-20">
+                        <flux:badge class="relative overflow-visible !bg-verde-claro !text-[#016630]">
+                            {{ __('Sano') }}
+                            <span class="pointer-events-none absolute -right-1 -top-1 flex size-2.5">
+                                <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>
+                                <span class="relative inline-flex size-2.5 rounded-full bg-green-500"></span>
+                            </span>
+                        </flux:badge>
+                    </span>
+                @else
+                    <span class="absolute right-3 top-3 z-20">
+                        <flux:badge class="relative overflow-visible bg-[#ffe0e1]! text-[#c20006]! ">
+                            {{ __('Plaga detectada') }}
+                            <span class="pointer-events-none absolute -right-1 -top-1 flex size-2.5">
+                                <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-400 opacity-75"></span>
+                                <span class="relative inline-flex size-2.5 rounded-full bg-red-500"></span>
+                            </span>
+                        </flux:badge>
+                    </span>
                 @endif
 
                 <div class="absolute left-5 -bottom-3.5 flex flex-wrap gap-2">
@@ -380,6 +406,18 @@
                                 </span>
                             </div>
                             @endif
+                            
+                            <div class="flex justify-start items-center gap-3 truncate font-display font-normal leading-[1.2] max-2xs:flex-col max-2xs:items-start max-2xs:gap-1.5 max-2xs:!whitespace-normal max-2xs:!overflow-visible max-2xs:!text-clip">
+                               <span class="inline-flex gap-1.5 items-center text-sm">
+                                    <flux:icon.activity class="size-3"/>
+                                    {{ __('Estado de salud:') }}
+                                </span>  
+                               <span class="italic font-medium ">
+                                    <flux:badge color="{{ $sano ? 'green' : 'red' }}" size="sm" class="whitespace-normal text-left">
+                                    {{ ucfirst($estado) }}
+                                    </flux:badge>
+                                </span>
+                            </div>
 
                         </div>
                     @endif
@@ -405,13 +443,62 @@
             </div>
         </article>
 
+        @if (!$sano)
+            <div class="mx-5 mt-6 bg-[#fff6f6] border border-[#f5d5d5] p-5 rounded-3xl ms-shadow-card">
+                <div class="inline-flex gap-2 items-center mb-4 text-[#c20006]">
+                    <flux:icon.triangle-alert  class="size-6" />
+                    <h3 class="font-display font-bold text-2xl">
+                        {{ __('Atención requerida') }} 
+                    </h3>
+                </div>
+
+                <div class="flex items-center mb-5 text-[#911115] px-1">
+                    <h3 class="font-display font-medium text-[16px] text-pretty ">
+                        {{ $mensaje_salud ?? __('Hemos detectado posibles indicios de enfermedad o moho (como moho verde) en el hongo analizado. Sigue las recomendaciones a continuación.') }}
+                    </h3>
+                </div>
+                
+                <div class="flex flex-col gap-4">
+                    <flux:callout class="bg-white border border-[#f5cece]!">
+                        <x-slot name="icon">
+                            <flux:icon.ban class="size-5 text-[#c20006]!" />
+                        </x-slot>
+                        <flux:callout.heading class="text-[#c20006]! font-bold">Aislamiento inmediato</flux:callout.heading>
+                        <flux:callout.text class="text-[#911115]!">
+                            <p>Separa este espécimen de los demás hongos sanos de inmediato. El moho verde (Trichoderma) se esparce rápidamente a través de esporas.</p>
+                        </flux:callout.text>
+                    </flux:callout>
+
+                    <flux:callout class="bg-white border border-[#f5cece]!">
+                        <x-slot name="icon">
+                            <flux:icon.spray-can class="size-5 text-[#c20006]!" />
+                        </x-slot>
+                        <flux:callout.heading class="text-[#c20006]! font-bold">Limpieza y desinfección</flux:callout.heading>
+                        <flux:callout.text class="text-[#911115]!">
+                            <p>Limpia tus herramientas y el área de contacto para evitar infectar próximos cultivos o recolecciones cercanas.</p>
+                        </flux:callout.text>
+                    </flux:callout>
+
+                    <flux:callout class="bg-[#ffeebf]! border-none!">
+                        <x-slot name="icon">
+                            <flux:icon.eye class="size-5 text-[#ba4e00]!" />
+                        </x-slot>
+                        <flux:callout.heading class="text-[#ba4e00]! font-bold">Monitoreo continuo</flux:callout.heading>
+                        <flux:callout.text class="text-[#ba4e00]!">
+                            <p>Si forma parte de un cultivo, verifica la temperatura y humedad, ya que el moho verde suele prosperar con poca ventilación y mucha humedad.</p>
+                        </flux:callout.text>
+                    </flux:callout>
+                </div>
+            </div>
+        @endif
+
         @if (!$detectado || ($confidencePct !== null && $confidencePct < 60))
                 <div class="mx-5 mt-6 mb-2 bg-white p-5 rounded-2xl shadow-sm border border-line-2">
                     <div class="inline-flex gap-3 items-center mb-4 text-ink">
                         <flux:icon.camera variant="solid" class="size-6" />
                         <h3 class="font-display font-bold text-2xl">
                             {{ __('Toma una mejor foto') }} 
-                        </h3>
+                        </h3>   
                     </div>
 
                     <div class="flex items-center mb-5 text-ink px-2">
