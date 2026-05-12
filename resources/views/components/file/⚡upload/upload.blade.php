@@ -133,25 +133,12 @@
                 <div class="flex flex-col gap-3 rounded-2xl bg-card p-4 border border-line-2">
                     {{-- Mode toggle --}}
                     <div class="flex gap-2">
-                        <button
-                            type="button"
-                            @click="stopCamera(); mode = 'file'"
-                            :class="mode === 'file' ? 'bg-olive text-white' : 'bg-olive/10 text-olive'"
-                            class="flex flex-1 items-center justify-center gap-2 rounded-xl py-2 text-sm font-semibold transition"
-                        >
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4">
-                                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
-                                <polyline points="17 8 12 3 7 8" />
-                                <line x1="12" y1="3" x2="12" y2="15" />
-                            </svg>
-                            {{ __('Subir archivo') }}
-                        </button>
+                        
                         <button
                             type="button"
                             @click="startCamera"
                             :class="mode === 'camera' ? 'bg-olive text-white' : 'bg-olive/10 text-olive'"
-                            class="flex flex-1 items-center justify-center gap-2 rounded-xl py-2 text-sm font-semibold transition"
-                        >
+                            class="flex flex-1 items-center justify-center gap-2 rounded-xl py-2 text-sm font-semibold transition">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4">
                                 <path d="M23 7l-7 5 7 5V7z" />
                                 <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
@@ -198,16 +185,11 @@
                 @endif
 
                 <div class="flex flex-col gap-2.5 sm:flex-row">
-                    <button
-                        type="submit"
-                        @disabled(!$foto)
-                        class="inline-flex h-[50px] flex-1 items-center justify-center gap-2 rounded-2xl bg-olive px-5 text-[15px] font-semibold text-white ms-shadow-cta transition hover:brightness-105 disabled:cursor-not-allowed disabled:opacity-50"
-                    >
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-[18px]">
-                            <path d="M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2 2-6z" />
-                        </svg>
-                        {{ __('Analizar foto') }}
-                    </button>
+                    <flux:button icon="scan" type="submit" variant="primary" class="w-full" :disabled="!$foto" 
+                                class="w-full bg-verde-fuerte! text-white! hover:bg-olive/90! disabled:bg-verde-claro! disabled:text-verde-fuerte! border-none!
+                                  disabled:cursor-not-allowed! transition!">
+                                 Analizar foto
+                    </flux:button>
                 </div>
             </form>
         </div>
@@ -217,53 +199,14 @@
     <div
         wire:loading
         wire:target="analizar"
-        class="w-full flex-col gap-6 overflow-hidden rounded-3xl p-7 text-cream flex"
-        style="background: radial-gradient(120% 80% at 50% 30%, #4a3f56 0%, #3c3546 60%, #1d1828 100%);"
+        class="w-full rounded-3xl bg-card p-7 border border-line-2 ms-shadow-card"
     >
-        <div class="relative">
-            <div class="aspect-[4/3] w-full overflow-hidden rounded-2xl" style="background: linear-gradient(135deg, #5a6a3f 0%, #3e4a2c 100%);">
-                <div class="absolute inset-0" style="background: repeating-linear-gradient(45deg, rgba(255,255,255,0.04) 0 2px, transparent 2px 8px);"></div>
-            </div>
-            <div
-                class="ms-scan-line pointer-events-none absolute left-0 right-0 top-0 h-0.5"
-                style="background: linear-gradient(90deg, transparent, #f9cb43, transparent); box-shadow: 0 0 16px #f9cb43, 0 0 32px rgba(249,203,67,0.5);"
-            ></div>
-        </div>
-
-        <div>
-            <span class="inline-flex items-center gap-1.5 rounded-full bg-gold/20 px-3 py-1.5 text-[11px] font-bold tracking-[1px] text-gold">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-3">
-                    <path d="M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2 2-6z" />
-                </svg>
-                {{ __('Analizando') }}
-            </span>
-            <h2 class="mt-3.5 font-display text-[26px] font-medium leading-[1.15] tracking-[-0.5px]">
-                {{ __('Identificando especie') }}...
-            </h2>
-        </div>
-
-        <div class="flex flex-col gap-2.5">
-            @foreach ([
-                ['label' => __('Procesando imagen'), 'state' => 'done'],
-                ['label' => __('Analizando características'), 'state' => 'loading'],
-            ] as $step)
-                <div class="flex items-center gap-2.5">
-                    @if ($step['state'] === 'done')
-                        <div class="flex size-5 items-center justify-center rounded-full bg-olive text-white">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="size-3">
-                                <path d="M5 12l4 4L19 6" />
-                            </svg>
-                        </div>
-                        <span class="text-[14px] font-medium text-cream">{{ $step['label'] }}</span>
-                    @elseif ($step['state'] === 'loading')
-                        <div class="ms-spin size-5 rounded-full border-2 border-gold border-t-transparent"></div>
-                        <span class="text-[14px] font-bold text-gold">{{ $step['label'] }}</span>
-                    @else
-                        <div class="size-5 rounded-full bg-white/10"></div>
-                        <span class="text-[14px] text-cream/45">{{ $step['label'] }}</span>
-                    @endif
-                </div>
-            @endforeach
+        <div x-data="{ progress: 0 }" x-init="setInterval(() => { progress = progress >= 95 ? 95 : progress + (Math.random() * 10) }, 300)">
+            <flux:field>
+                <flux:label class="text-lg font-semibold">{{ __('Identificando especie...') }}</flux:label>
+                <flux:progress ::value="progress" color="green" class="mt-2 mb-1" />
+                <flux:description>{{ __('Procesando imagen y analizando características') }}</flux:description>
+            </flux:field>
         </div>
     </div>
 
@@ -276,25 +219,53 @@
             $especie   = $payload['especie'] ?? null;
             $confianza = $payload['confianza'] ?? null;
             $cultivada = $payload['cultivada'] ?? null;
-            $mensaje   = $payload['mensaje'] ?? null;
+            $mensaje   = $payload['mensaje_especie'] ?? $payload['mensaje'] ?? null;
             $id_especie = $payload['id_especie'] ?? null;
+            
+            $sano = $payload['sano'] ?? true;
+            $estado = $payload['estado'] ?? 'sano';
+            $mensaje_salud = $payload['mensaje_salud'] ?? null;
 
             $confidencePct = is_numeric($confianza)
                 ? (($confianza <= 1 && $confianza > 0) ? (float) $confianza * 100 : (float) $confianza)
                 : null;
+
+            $especieModel = $id_especie !== null ? \App\Models\Especie::find($id_especie) : null;
         @endphp
 
         <article class="overflow-hidden rounded-3xl border border-line-2 bg-card ms-shadow-card">
             {{-- Hero --}}
-            <div class="relative h-56" style="background: linear-gradient(135deg, #9a9080 0%, #6a6055 100%);">
-                <div class="absolute inset-0" style="background: repeating-linear-gradient(45deg, rgba(255,255,255,0.04) 0 2px, transparent 2px 8px);"></div>
-                <img
-                        x-show="mode !== 'camera'"
+            <div class="relative h-56 bg-olive/20">
+                
+                @if ($foto && method_exists($foto, 'temporaryUrl'))
+                    <img
                         src="{{ $foto->temporaryUrl() }}"
                         alt="{{ __('Vista previa') }}"
                         class="absolute inset-0 size-full object-cover"
                     />
-                <div class="absolute inset-0" style="background: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, transparent 30%, transparent 60%);"></div>
+                @endif
+                
+                @if ($sano)
+                    <span class="absolute right-3 top-3 z-20">
+                        <flux:badge class="relative overflow-visible !bg-verde-claro !text-[#016630]">
+                            {{ __('Sano') }}
+                            <span class="pointer-events-none absolute -right-1 -top-1 flex size-2.5">
+                                <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>
+                                <span class="relative inline-flex size-2.5 rounded-full bg-green-500"></span>
+                            </span>
+                        </flux:badge>
+                    </span>
+                @else
+                    <span class="absolute right-3 top-3 z-20">
+                        <flux:badge class="relative overflow-visible bg-[#ffe0e1]! text-[#c20006]! ">
+                            {{ __('Plaga detectada') }}
+                            <span class="pointer-events-none absolute -right-1 -top-1 flex size-2.5">
+                                <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-400 opacity-75"></span>
+                                <span class="relative inline-flex size-2.5 rounded-full bg-red-500"></span>
+                            </span>
+                        </flux:badge>
+                    </span>
+                @endif
 
                 <div class="absolute left-5 -bottom-3.5 flex flex-wrap gap-2">
                     @if ($cultivada !== null)
@@ -371,10 +342,85 @@
             @endif
 
             {{-- Message / Info --}}
-            @if ($mensaje)
+            @if ($especieModel || $mensaje)
                 <div class="mx-5 mt-4 rounded-2xl border border-line-2 bg-card p-4">
-                    <div class="font-display text-[16px] font-medium tracking-[-0.2px] text-ink">{{ __('Información') }}</div>
-                    <p class="mt-1.5 text-[13px] leading-[1.55] text-ink-2">{{ $mensaje }}</p>
+                    <div class="font-display text-[16px] font-medium tracking-[-0.2px] text-ink mb-3">{{ __('Información') }}</div>
+                    
+                    @if ($mensaje)
+                        <p class="text-[13px] leading-[1.55] text-ink-2 mb-4">{{ $mensaje }}</p>
+                    @endif
+
+                    @if ($especieModel)
+                        <div class="flex flex-col items-start justify-center gap-2.5 text-ink text-base">
+                            
+                            @if ($especieModel->nombre_comun)
+                            <div class="flex justify-start items-center gap-3 truncate font-display font-normal leading-[1.2] max-2xs:flex-col max-2xs:items-start max-2xs:gap-1.5 max-2xs:!whitespace-normal max-2xs:!overflow-visible max-2xs:!text-clip">
+                               <span class="inline-flex gap-1.5 items-center text-sm">
+                                    <flux:icon.book-marked class="size-3"/>
+                                    {{ __('Nombre común:') }}
+                                </span>  
+                               <span class="italic font-medium ">
+                                    <flux:badge color="yellow" size="sm" class="whitespace-normal text-left">
+                                    {{ $especieModel->nombre_comun }}
+                                    </flux:badge>
+                                </span>
+                            </div>
+                            @endif
+                            
+                            <div class="flex justify-start items-center gap-3 truncate font-display font-normal leading-[1.2] max-2xs:flex-col max-2xs:items-start max-2xs:gap-1.5 max-2xs:!whitespace-normal max-2xs:!overflow-visible max-2xs:!text-clip">
+                               <span class="inline-flex gap-1.5 items-center text-sm">
+                                    <flux:icon.folder-tree class="size-3"/>
+                                    {{ __('Familia:') }}
+                                </span>  
+                               <span class="italic font-medium ">
+                                    <flux:badge color="lime" size="sm" class="whitespace-normal text-left">
+                                    {{ $especieModel->familia }}
+                                    </flux:badge>
+                                </span>
+                            </div>
+
+                            @if ($especieModel->zonas_crecimiento)
+                            <div class="flex justify-start items-center gap-3 truncate font-display font-normal leading-[1.2] max-2xs:flex-col max-2xs:items-start max-2xs:gap-1.5 max-2xs:!whitespace-normal max-2xs:!overflow-visible max-2xs:!text-clip">
+                               <span class="inline-flex gap-1.5 items-center text-sm">
+                                    <flux:icon.globe class="size-3"/>
+                                    {{ __('Zonas:') }}
+                                </span>  
+                               <span class="italic font-medium ">
+                                    <flux:badge color="blue" size="sm" class="whitespace-normal text-left">
+                                    {{ $especieModel->zonas_crecimiento }}
+                                    </flux:badge>
+                                </span>
+                            </div>
+                            @endif
+
+                            @if ($especieModel->ambientes_comunes)
+                            <div class="flex justify-start items-center gap-3 truncate font-display font-normal leading-[1.2] max-2xs:flex-col max-2xs:items-start max-2xs:gap-1.5 max-2xs:!whitespace-normal max-2xs:!overflow-visible max-2xs:!text-clip">
+                               <span class="inline-flex gap-1.5 items-center text-sm">
+                                    <flux:icon.trees class="size-3"/>
+                                    {{ __('Ambientes:') }}
+                                </span>  
+                               <span class="italic font-medium ">
+                                    <flux:badge color="zinc" size="sm" class="whitespace-normal text-left">
+                                    {{ $especieModel->ambientes_comunes }}
+                                    </flux:badge>
+                                </span>
+                            </div>
+                            @endif
+                            
+                            <div class="flex justify-start items-center gap-3 truncate font-display font-normal leading-[1.2] max-2xs:flex-col max-2xs:items-start max-2xs:gap-1.5 max-2xs:!whitespace-normal max-2xs:!overflow-visible max-2xs:!text-clip">
+                               <span class="inline-flex gap-1.5 items-center text-sm">
+                                    <flux:icon.activity class="size-3"/>
+                                    {{ __('Estado de salud:') }}
+                                </span>  
+                               <span class="italic font-medium ">
+                                    <flux:badge color="{{ $sano ? 'green' : 'red' }}" size="sm" class="whitespace-normal text-left">
+                                    {{ ucfirst($estado) }}
+                                    </flux:badge>
+                                </span>
+                            </div>
+
+                        </div>
+                    @endif
                 </div>
             @endif
 
@@ -390,20 +436,112 @@
 
             {{-- CTAs --}}
             <div class="flex flex-col gap-2.5 p-5 pt-6 sm:flex-row">
-                <button
-                    type="button"
-                    wire:click="$set('resultado', null)"
-                    class="inline-flex h-[50px] flex-1 items-center justify-center gap-2 rounded-2xl bg-olive px-5 text-[15px] font-semibold text-white ms-shadow-cta transition hover:brightness-105"
-                >
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-[18px]">
-                        <path d="M4 8h3l2-2h6l2 2h3a1 1 0 011 1v9a1 1 0 01-1 1H4a1 1 0 01-1-1V9a1 1 0 011-1z" />
-                        <circle cx="12" cy="13" r="3.5" />
-                    </svg>
-                    {{ __('Nuevo escaneo') }}
-                </button>
+                <flux:button wire:click="$set('resultado', null)" icon="scan-search" type="button" class="w-full" 
+                                class="w-full bg-verde-claro! text-verde-fuerte! border-none!">
+                                 Nuevo escaneo 
+                </flux:button>
             </div>
         </article>
+
+        @if (!$sano)
+            <div class="mx-5 mt-6 bg-[#fff6f6] border border-[#f5d5d5] p-5 rounded-3xl ms-shadow-card">
+                <div class="inline-flex gap-2 items-center mb-4 text-[#c20006]">
+                    <flux:icon.triangle-alert  class="size-6" />
+                    <h3 class="font-display font-bold text-2xl">
+                        {{ __('Atención requerida') }} 
+                    </h3>
+                </div>
+
+                <div class="flex items-center mb-5 text-[#911115] px-1">
+                    <h3 class="font-display font-medium text-[16px] text-pretty ">
+                        {{ $mensaje_salud ?? __('Hemos detectado posibles indicios de enfermedad o moho (como moho verde) en el hongo analizado. Sigue las recomendaciones a continuación.') }}
+                    </h3>
+                </div>
+                
+                <div class="flex flex-col gap-4">
+                    <flux:callout class="bg-white border border-[#f5cece]!">
+                        <x-slot name="icon">
+                            <flux:icon.ban class="size-5 text-[#c20006]!" />
+                        </x-slot>
+                        <flux:callout.heading class="text-[#c20006]! font-bold">Aislamiento inmediato</flux:callout.heading>
+                        <flux:callout.text class="text-[#911115]!">
+                            <p>Separa este espécimen de los demás hongos sanos de inmediato. El moho verde (Trichoderma) se esparce rápidamente a través de esporas.</p>
+                        </flux:callout.text>
+                    </flux:callout>
+
+                    <flux:callout class="bg-white border border-[#f5cece]!">
+                        <x-slot name="icon">
+                            <flux:icon.spray-can class="size-5 text-[#c20006]!" />
+                        </x-slot>
+                        <flux:callout.heading class="text-[#c20006]! font-bold">Limpieza y desinfección</flux:callout.heading>
+                        <flux:callout.text class="text-[#911115]!">
+                            <p>Limpia tus herramientas y el área de contacto para evitar infectar próximos cultivos o recolecciones cercanas.</p>
+                        </flux:callout.text>
+                    </flux:callout>
+
+                    <flux:callout class="bg-[#ffeebf]! border-none!">
+                        <x-slot name="icon">
+                            <flux:icon.eye class="size-5 text-[#ba4e00]!" />
+                        </x-slot>
+                        <flux:callout.heading class="text-[#ba4e00]! font-bold">Monitoreo continuo</flux:callout.heading>
+                        <flux:callout.text class="text-[#ba4e00]!">
+                            <p>Si forma parte de un cultivo, verifica la temperatura y humedad, ya que el moho verde suele prosperar con poca ventilación y mucha humedad.</p>
+                        </flux:callout.text>
+                    </flux:callout>
+                </div>
+            </div>
+        @endif
+
+        @if (!$detectado || ($confidencePct !== null && $confidencePct < 60))
+                <div class="mx-5 mt-6 mb-2 bg-white p-5 rounded-2xl shadow-sm border border-line-2">
+                    <div class="inline-flex gap-3 items-center mb-4 text-ink">
+                        <flux:icon.camera variant="solid" class="size-6" />
+                        <h3 class="font-display font-bold text-2xl">
+                            {{ __('Toma una mejor foto') }} 
+                        </h3>   
+                    </div>
+
+                    <div class="flex items-center mb-5 text-ink px-2">
+                        <h3 class="font-display font-bold text-xl text-pretty ">
+                            {{ __('Tu foto no es de alta calidad. ¡Aquí tienes algunos consejos para mejorar el reconocimiento!') }} 
+                        </h3>
+                    </div>
+                    
+                    <div class="flex flex-col gap-4">
+                        <flux:callout class="bg-[#f2f7f2]! border-none!">
+                            <x-slot name="icon">
+                                <flux:icon.magnifying-glass-plus class="size-5 text-[#80b67e]!" />
+                            </x-slot>
+                            <flux:callout.heading class="text-[#80b67e]!">Captura los detalles clave</flux:callout.heading>
+                            <flux:callout.text class="text-[#80b67e]!">
+                                <p>Intenta incluir la parte superior del sombrero y, si es visible, las láminas o poros debajo del mismo.</p>
+                            </flux:callout.text>
+                        </flux:callout>
+
+                        <flux:callout class="bg-[#ffeebf]! border-none!">
+                            <x-slot name="icon">
+                                <flux:icon.sparkles class="size-5 text-[#ba4e00]!" />
+                            </x-slot>
+                            <flux:callout.heading class="text-[#ba4e00]!">Limpia tu lente</flux:callout.heading>
+                            <flux:callout.text class="text-[#ba4e00]!">
+                                <p>Un lente limpio previene fotos borrosas e incrementa significativamente la precisión del reconocimiento.</p>
+                            </flux:callout.text>
+                        </flux:callout>
+                        
+                        <flux:callout class="bg-[#faebeb]! text-[#cb3434]! border-none!">
+                            <x-slot name="icon">
+                                <flux:icon.key-round class="size-5" />
+                            </x-slot>
+                            <flux:callout.heading class="text-[#cb3434]!">Enfoque</flux:callout.heading>
+                            <flux:callout.text class="text-[#cb3434]!">
+                                <p>Acércate para que el hongo ocupe la mayor parte de la imagen, asegurando un enfoque nítido.</p>
+                            </flux:callout.text>
+                        </flux:callout>
+                    </div>
+                </div>
+            @endif
     @endif
 </div>
+
 
 

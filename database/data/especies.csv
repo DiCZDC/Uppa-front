@@ -1,0 +1,211 @@
+ID,Nombre Científico,Nombre Común,Familia,Zonas de Crecimiento,Ambientes Comunes
+0,Mycena metata,Micena de las agujas,Mycenaceae,Europa y Norteamérica,Bosques de coníferas y brezales
+1,Mycena epipterygia,Micena viscosa,Mycenaceae,Cosmopolita,Bosques mixtos y zonas musgosas
+2,Clitocybe fragrans,Clitocibe perfumado,Tricholomataceae,Europa y Asia,Bosques de planifolios y praderas
+3,Mycena pseudocorticola,Micena de la corteza,Mycenaceae,Europa,Troncos vivos con musgo
+4,Mycena galericulata,Micena en casco,Mycenaceae,Hemisferio Norte,Madera en descomposición de frondosas
+5,Mycena tintinnabulum,Micena invernal,Mycenaceae,Europa,Tocones de haya y roble
+6,Mycena filopes,Micena de pie filiforme,Mycenaceae,Europa y Norteamérica,Suelos ricos en humus y hojarasca
+7,Mycena clavularis,Micena del disco,Mycenaceae,Europa,Corteza de árboles planifolios
+8,Mycena arcangeliana,Micena de olor a yodo,Mycenaceae,Europa,Ramas caídas de frondosas
+9,Mycena chlorantha,Micena de las dunas,Mycenaceae,Europa (Costas),Dunas arenosas con gramíneas
+10,Russula claroflava,Rúsula amarilla de los abedules,Russulaceae,Europa y Norteamérica,Zonas húmedas con abedules
+11,Agaricus campestris,Champiñón de prado,Agaricaceae,Cosmopolita,Pastizales y zonas abonadas
+12,Boletus reticulatus,Boleto reticulado,Boletaceae,Europa,Bosques de frondosas (robles y hayas)
+13,Mycena sanguinolenta,Micena de borde rojo,Mycenaceae,Europa y Norteamérica,Hojarasca de coníferas
+14,Clitocybe costata,Clitocibe costillado,Tricholomataceae,Europa,Bosques de coníferas y claros
+15,Amanita rubescens,Amanita vinosa,Amanitaceae,Cosmopolita,Bosques de todo tipo (especialmente ácidos)
+16,Agaricus xanthodermus,Champiñón amarilleante,Agaricaceae,Cosmopolita,Jardines y parques
+17,Russula vesca,Rúsula comestible,Russulaceae,Europa,Bosques de frondosas y coníferas
+18,Amanita pantherina,Amanita pantera,Amanitaceae,Hemisferio Norte,Bosques de frondosas y coníferas
+19,Mycena renati,Micena de pie amarillo,Mycenaceae,Europa,Madera muerta de frondosas
+20,Boletus pinophilus,Boleto de los pinos,Boletaceae,Europa,Bosques de coníferas y altas montañas
+21,Boletus edulis,Hongo blanco,Boletaceae,Hemisferio Norte,Bosques de pinos y hayas
+22,Mycena citrinomarginata,Micena de borde cítrico,Mycenaceae,Europa,Hojarasca de frondosas
+23,Russula recondita,Rúsula recondita,Russulaceae,Europa,Bosques de coníferas
+24,Russula graveolens,Rúsula de olor fuerte,Russulaceae,Europa,Bosques de robles
+25,Russula solaris,Rúsula solar,Russulaceae,Europa,Bosques de hayas
+26,Russula violeipes,Rúsula de pie violáceo,Russulaceae,Europa y Asia,Bosques de planifolios
+27,Mycena acicula,Micena aguja,Mycenaceae,Cosmopolita,Restos vegetales muy húmedos
+28,Agaricus augustus,Champiñón augusto,Agaricaceae,Europa y Norteamérica,Bosques de coníferas y jardines
+29,Amanita fulva,Amanita enfundada,Amanitaceae,Europa,Bosques ácidos y turberas
+30,Russula odorata,Rúsula olorosa,Russulaceae,Europa,Bosques de encinas
+31,Russula olivacea,Rúsula olivácea,Russulaceae,Europa,Bosques de hayas y abetos
+32,Russula nauseosa,Rúsula nauseosa,Russulaceae,Europa,Bosques de montaña con abetos
+33,Amanita gemmata,Amanita de color yema,Amanitaceae,Europa y Norteamérica,Suelos arenosos con pinos
+34,Russula pelargonia,Rúsula de geranio,Russulaceae,Europa,Bajo álamos y sauces
+35,Russula versicolor,Rúsula de color variable,Russulaceae,Europa,Bajo abedules
+36,Russula sororia,Rúsula hermana,Russulaceae,Europa y Norteamérica,Bosques de frondosas
+37,Agaricus moelleri,Champiñón de Moeller,Agaricaceae,Europa,Bosques de planifolios
+38,Russula amoenolens,Rúsula camaleón,Russulaceae,Europa,Suelos ácidos bajo robles
+39,Agaricus sylvicola,Champiñón de los bosques,Agaricaceae,Europa y Norteamérica,Bosques de coníferas y mixtos
+40,Russula paludosa,Rúsula de los pantanos,Russulaceae,Europa y Asia,Turberas y bosques de pinos
+41,Russula pseudointegra,Rúsula pseudointegra,Russulaceae,Europa,Bosques de robles
+42,Agaricus arvensis,Bola de nieve,Agaricaceae,Europa y Norteamérica,Pastizales y claros de bosque
+43,Agaricus impudicus,Champiñón impúdico,Agaricaceae,Europa,Bajo pinos en suelos arenosos
+44,Russula grata,Rúsula almendrada,Russulaceae,Europa,Bosques de frondosas
+45,Mycena purpureofusca,Micena púrpura,Mycenaceae,Europa y Norteamérica,Troncos de coníferas
+46,Amanita phalloides,Oronja verde,Amanitaceae,Cosmopolita,Bosques de robles y encinas
+47,Russula virescens,Carbonera,Russulaceae,Europa y Asia,Bosques de frondosas
+48,Russula romellii,Rúsula de Romell,Russulaceae,Europa,Bosques de hayas
+49,Russula velenovskyi,Rúsula de Velenovsky,Russulaceae,Europa,Bajo abedules y pinos
+50,Russula ochroleuca,Rúsula ocre,Russulaceae,Europa,Bosques mixtos
+51,Russula carpini,Rúsula de los carpes,Russulaceae,Europa,Asociada a Carpinus betulus
+52,Russula melzeri,Rúsula de Melzer,Russulaceae,Europa,Bosques de pinos y hayas
+53,Russula delica,Rúsula blanca,Russulaceae,Europa y Asia,Bosques de planifolios
+54,Amanita virosa,Cicuta blanca,Amanitaceae,Europa y Asia,Bosques de coníferas en suelos ácidos
+55,Mycena stipata,Micena agrupada,Mycenaceae,Europa,Madera de coníferas
+56,Agaricus bitorquis,Champiñón de aceras,Agaricaceae,Cosmopolita,Suelos compactados y bordes de caminos
+57,Russula acrifolia,Rúsula de láminas acres,Russulaceae,Europa,Bosques de frondosas
+58,Russula rosea,Rúsula rosada,Russulaceae,Europa,Bosques de hayas y robles
+59,Agaricus subperonatus,Champiñón de borde doble,Agaricaceae,Europa,Zonas ricas en nitrógeno y parques
+60,Amanita muscaria,Matamoscas,Amanitaceae,Cosmopolita,Bosques de coníferas y abedules
+61,Russula cyanoxantha,Carbonera azulada,Russulaceae,Europa y Asia,Bosques de frondosas
+62,Amanita franchetii,Amanita de Franchet,Amanitaceae,Europa y Norteamérica,Bosques de robles y pinos
+63,Russula subfoetens,Rúsula fétida menor,Russulaceae,Europa,Bosques de frondosas
+64,Mycena haematopus,Micena de leche roja,Mycenaceae,Hemisferio Norte,Troncos muertos de frondosas
+65,Amanita crocea,Amanita azafranada,Amanitaceae,Europa,Bosques de frondosas y abedules
+66,Amanita citrina,Amanita color limón,Amanitaceae,Europa y Norteamérica,Bosques de pinos y robles
+67,Mycena rubromarginata,Micena de borde rojo sangre,Mycenaceae,Europa,Ramas de coníferas
+68,Agaricus litoralis,Champiñón litoral,Agaricaceae,Europa,Zonas costeras y pastizales
+69,Russula betularum,Rúsula de los abedules,Russulaceae,Europa,Asociada estrictamente a abedules
+70,Agaricus bernardii,Champiñón de Bernard,Agaricaceae,Europa y Norteamérica,Saladares y bordes de carreteras
+71,Russula chloroides,Rúsula blanca clorada,Russulaceae,Europa,Bosques de frondosas y coníferas
+72,Mycena galopus,Micena de leche blanca,Mycenaceae,Europa y Norteamérica,Hojarasca de todo tipo
+73,Mycena rosea,Micena rosada,Mycenaceae,Europa,Bosques de frondosas (hayas)
+74,Russula queletii,Rúsula de Quelet,Russulaceae,Europa,Bosques de abetos
+75,Russula adusta,Rúsula quemada,Russulaceae,Europa,Bosques de coníferas
+76,Russula depallens,Rúsula pálida,Russulaceae,Europa,Bosques de abedules y hayas
+77,Agaricus sylvaticus,Champiñón de los pinos,Agaricaceae,Europa,Bosques de coníferas
+78,Agaricus crocodilinus,Champiñón gigante de prado,Agaricaceae,Norteamérica y Europa,Pastizales de montaña
+79,Russula luteotacta,Rúsula amarilleante,Russulaceae,Europa,Bosques de frondosas húmedos
+80,Russula sanguinea,Rúsula sanguínea,Russulaceae,Europa,Bosques de pinos
+81,Russula gracillima,Rúsula grácil,Russulaceae,Europa,Zonas húmedas con abedules
+82,Russula decolorans,Rúsula decolorante,Russulaceae,Europa y Norteamérica,Bosques de coníferas y turberas
+83,Russula silvestris,Rúsula de los bosques,Russulaceae,Europa,Suelos ácidos bajo frondosas
+84,Russula xerampelina,Rúsula de los mariscos,Russulaceae,Europa y Norteamérica,Bosques de coníferas
+85,Russula rhodopus,Rúsula de pie rojo,Russulaceae,Europa,Bosques de montaña con coníferas
+86,Russula aurea,Rúsula dorada,Russulaceae,Europa,Bosques de frondosas
+87,Mycena crocata,Micena de azafrán,Mycenaceae,Europa,Hojarasca de hayas
+88,Russula risigallina,Rúsula amarilla pequeña,Russulaceae,Europa,Bosques de frondosas
+89,Russula sardonia,Rúsula sardonia,Russulaceae,Europa,Pinares en suelos arenosos
+90,Russula foetens,Rúsula fétida,Russulaceae,Europa y Asia,Bosques de frondosas y coníferas
+91,Russula atropurpurea,Rúsula de color púrpura,Russulaceae,Europa,Bosques de robles y hayas
+92,Russula curtipes,Rúsula de pie corto,Russulaceae,Europa,Bosques de hayas
+93,Russula nobilis,Rúsula noble,Russulaceae,Europa,Bosques de hayas
+94,Mycena pelianthina,Micena de láminas oscuras,Mycenaceae,Europa,Bosques de hayas
+95,Mycena luteovariegata,Micena de manchas amarillas,Mycenaceae,Norteamérica,Madera de frondosas
+96,Amanita porphyria,Amanita porfídica,Amanitaceae,Hemisferio Norte,Bosques de coníferas
+97,Mycena flavescens,Micena amarilleante,Mycenaceae,Europa,Prados y claros de bosque
+98,Clitocybe phyllophila,Clitocibe de las hojas,Tricholomataceae,Europa,Hojarasca de frondosas y coníferas
+99,Russula fellea,Rúsula de hiel,Russulaceae,Europa,Bosques de hayas
+100,Russula nitida,Rúsula brillante,Russulaceae,Europa,Bajo abedules
+101,Russula anthracina,Rúsula negra,Russulaceae,Europa,Bosques de frondosas y coníferas
+102,Russula roseoaurantia,Rúsula rosa-naranja,Russulaceae,Europa,Bosques de planifolios
+103,Clitocybe odora,Clitocibe de anís,Tricholomataceae,Europa y Norteamérica,Bosques de frondosas
+104,Russula puellula,Rúsula pequeña de los bosques,Russulaceae,Europa,Bosques de hayas
+105,Mycena tenerrima,Micena delicada,Mycenaceae,Europa,Restos leñosos y tallos
+106,Agaricus bohusii,Champiñón de Bohus,Agaricaceae,Europa,Bosques de frondosas
+107,Mycena inclinata,Micena inclinada,Mycenaceae,Europa y Norteamérica,Tocones de roble
+108,Agaricus depauperatus,Champiñón depauperado,Agaricaceae,Europa,Parques y jardines
+109,Russula vinosa,Rúsula de vino,Russulaceae,Europa y Norteamérica,Bosques de pinos y turberas
+110,Mycena rosella,Micena rosada pequeña,Mycenaceae,Hemisferio Norte,Agujas de coníferas
+111,Russula atrorubens,Rúsula rojo oscuro,Russulaceae,Europa,Zonas húmedas bajo sauces
+112,Mycena pterigena,Micena de los helechos,Mycenaceae,Europa,Frondes muertas de helechos
+113,Mycena aetites,Micena gris de los prados,Mycenaceae,Europa,Pastizales y zonas herbosas
+114,Mycena zephirus,Micena de los vientos,Mycenaceae,Europa,Hojarasca de pinos
+115,Clitocybe rivulosa,Clitocibe de los prados,Tricholomataceae,Europa y Norteamérica,Praderas y jardines
+116,Russula laccata,Rúsula lacada,Russulaceae,Europa,Asociada a sauces enanos (zonas alpinas)
+117,Mycena maculata,Micena manchada,Mycenaceae,Europa y Norteamérica,Madera de coníferas y frondosas
+118,Mycena erubescens,Micena amarga,Mycenaceae,Europa,Bosques de hayas
+119,Mycena polygramma,Micena de pie estriado,Mycenaceae,Europa y Norteamérica,Tocones de frondosas
+120,Clitocybe nebularis,Pardilla,Tricholomataceae,Europa,Hojarasca de todo tipo
+121,Mycena leptocephala,Micena de olor nitroso,Mycenaceae,Hemisferio Norte,Suelos con restos vegetales
+122,Mycena amicta,Micena envuelta,Mycenaceae,Europa,Restos de coníferas
+123,Russula fragilis,Rúsula frágil,Russulaceae,Cosmopolita,Bosques mixtos
+124,Mycena juniperina,Micena de los enebros,Mycenaceae,Europa,Corteza de Juniperus
+125,Mycena vitilis,Micena flexible,Mycenaceae,Europa y Norteamérica,Ramas pequeñas caídas
+126,Mycena meliigena,Micena de la corteza rugosa,Mycenaceae,Europa,Corteza con musgo de frondosas
+127,Mycena cinerella,Micena cenicienta,Mycenaceae,Europa,Hojarasca de coníferas y prados
+128,Clitocybe metachroa,Clitocibe de color variable,Tricholomataceae,Europa,Bosques de pinos
+129,Mycena xantholeuca,Micena blanco-amarilla,Mycenaceae,Europa,Zonas herbosas
+130,Russula puellaris,Rúsula de la joven,Russulaceae,Europa y Norteamérica,Bosques mixtos
+131,Mycena bulbosa,Micena bulbosa,Mycenaceae,Europa,Tallos de Juncus y Carex
+132,Amanita olivaceogrisea,Amanita gris oliva,Amanitaceae,Europa,Bosques de frondosas
+133,Amanita ceciliae,Amanita de Cecilia,Amanitaceae,Europa y Norteamérica,Bosques de planifolios
+134,Russula aeruginea,Rúsula verde de los abedules,Russulaceae,Europa y Norteamérica,Bajo abedules
+135,Russula brunneoviolacea,Rúsula parda violácea,Russulaceae,Europa,Bosques de frondosas
+136,Russula integra,Rúsula íntegra,Russulaceae,Europa,Bosques de coníferas (montaña)
+137,Clitocybe agrestis,Clitocibe de los campos,Tricholomataceae,Europa,Zonas cultivadas y praderas
+138,Amanita regalis,Amanita real,Amanitaceae,Europa y Norteamérica,Bosques de abetos y pinos
+139,Clitocybe phaeophthalma,Clitocibe de olor a gallinero,Tricholomataceae,Europa,Bosques de planifolios
+140,Russula illota,Rúsula de borde sucio,Russulaceae,Europa,Bosques de frondosas
+141,Russula emetica,Rúsula emética,Russulaceae,Hemisferio Norte,Bosques de coníferas y turberas
+142,Russula alnetorum,Rúsula de los alisos,Russulaceae,Europa,Asociada a Alnus
+143,Russula cessans,Rúsula tardía,Russulaceae,Europa,Pinares en suelos arenosos
+144,Russula insignis,Rúsula con velo,Russulaceae,Europa,Bosques de encinas
+145,Russula maculata,Rúsula manchada,Russulaceae,Europa,Bosques de hayas
+146,Mycena stylobates,Micena de base discoidal,Mycenaceae,Europa y Norteamérica,Hojas muertas y tallos
+147,Mycena capillaripes,Micena de pie capilar,Mycenaceae,Europa,Agujas de pinos
+148,Russula parazurea,Rúsula azulada de los parques,Russulaceae,Europa,Parques y bosques de planifolios
+149,Mycena olivaceomarginata,Micena de borde oliva,Mycenaceae,Europa,Pastizales
+150,Russula mustelina,Rúsula de color marta,Russulaceae,Europa,Bosques de coníferas de montaña
+151,Russula heterophylla,Rúsula de láminas bifurcadas,Russulaceae,Europa,Bosques de frondosas
+152,Russula viscida,Rúsula viscosa,Russulaceae,Europa,Bosques de abetos
+153,Mycena aurantiomarginata,Micena de borde naranja,Mycenaceae,Hemisferio Norte,Hojarasca de coníferas
+154,Agaricus brunneolus,Champiñón purpúreo,Agaricaceae,Europa,Bosques de planifolios
+155,Russula aurora,Rúsula rosada pálida,Russulaceae,Europa,Bosques de hayas
+156,Russula laeta,Rúsula alegre,Russulaceae,Europa,Bosques de robles
+157,Agaricus langei,Champiñón de Lange,Agaricaceae,Europa,Bosques de coníferas
+158,Russula grisea,Rúsula gris,Russulaceae,Europa,Bosques de frondosas
+159,Russula densifolia,Rúsula de láminas densas,Russulaceae,Europa y Asia,Bosques mixtos
+160,Russula melliolens,Rúsula de olor a miel,Russulaceae,Europa,Bosques de frondosas
+161,Amanita lividopallescens,Amanita pálida,Amanitaceae,Europa,Bosques de robles
+162,Russula faustiana,Rúsula de Fausto,Russulaceae,Europa,Bosques de frondosas
+163,Russula ionochlora,Rúsula lila y verde,Russulaceae,Europa,Bosques de hayas y robles
+164,Russula caerulea,Rúsula azul de los pinos,Russulaceae,Europa,Pinares
+165,Amanita submembranacea,Amanita submembranácea,Amanitaceae,Europa,Bosques de coníferas de montaña
+166,Clitocybe vibecina,Clitocibe estriado,Tricholomataceae,Europa,Bosques de pinos y brezales
+167,Clitocybe amarescens,Clitocibe amargo,Tricholomataceae,Europa,Zonas con restos vegetales y ortigas
+168,Mycena pseudopicta,Micena falsa picta,Mycenaceae,Europa,Pastizales calcáreos
+169,Mycena smithiana,Micena de Smith,Mycenaceae,Norteamérica,Restos de madera de frondosas
+170,Mycena abramsii,Micena de primavera,Mycenaceae,Europa y Norteamérica,Madera de frondosas en primavera
+171,Russula cuprea,Rúsula de color cobre,Russulaceae,Europa,Bosques de frondosas
+172,Russula farinipes,Rúsula de pie harinoso,Russulaceae,Europa,Bosques de frondosas
+173,Russula veternosa,Rúsula vieja,Russulaceae,Europa,Bosques de planifolios
+174,Russula seperina,Rúsula separada,Russulaceae,Europa,Bosques de encinas
+175,Russula aquosa,Rúsula acuosa,Russulaceae,Europa,Zonas muy húmedas con abedules
+176,Agaricus bisporus,Champiñón común,Agaricaceae,Cosmopolita,Suelos ricos en materia orgánica y cultivos
+177,Russula faginea,Rúsula de las hayas,Russulaceae,Europa,Bajo Fagus sylvatica
+178,Russula clavipes,Rúsula de pie en maza,Russulaceae,Europa,Bosques de frondosas
+179,Russula subrubens,Rúsula de los sauces,Russulaceae,Europa,Zonas pantanosas con sauces
+180,Mycena clavicularis,Micena pegajosa,Mycenaceae,Europa y Norteamérica,Hojarasca de coníferas
+181,Agaricus cupreobrunneus,Champiñón pardo cobrizo,Agaricaceae,Europa,Prados salinos y pastizales
+182,Mycena polyadelpha,Micena de las hojas de roble,Mycenaceae,Europa,Hojas muertas de roble
+183,Mycena silvae-nigrae,Micena de la Selva Negra,Mycenaceae,Europa,Madera muerta de coníferas
+184,Amanita vaginata,Amanita enfundada gris,Amanitaceae,Europa,Bosques mixtos
+185,Mycena picta,Micena pintada,Mycenaceae,Europa,Restos de madera y hojas
+186,Amanita huijsmanii,Amanita de Huijsman,Amanitaceae,Europa,Bosques de frondosas
+187,Mycena vulgaris,Micena común viscosa,Mycenaceae,Europa y Norteamérica,Agujas de pinos
+188,Clitocybe subspadicea,Clitocibe pardo,Tricholomataceae,Europa,Dunas y suelos arenosos
+189,Mycena belliae,Micena de los juncos,Mycenaceae,Europa,Tallos de Phragmites
+190,Agaricus dulcidulus,Champiñón dulce,Agaricaceae,Europa,Bosques de frondosas
+191,Russula turci,Rúsula de Turco,Russulaceae,Europa,Bosques de pinos (olor a yodo)
+192,Clitocybe diatreta,Clitocibe rosado,Tricholomataceae,Europa,Suelos arenosos con pinos
+193,Clitocybe obsoleta,Clitocibe pálido,Tricholomataceae,Europa,Bosques de coníferas
+194,Mycena mucor,Micena de las hojas,Mycenaceae,Europa,Hojas muertas de roble
+195,Amanita simulans,Amanita simulante,Amanitaceae,Europa,Bajo chopos y sauces
+196,Mycena megaspora,Micena de grandes esporas,Mycenaceae,Europa,Turberas
+197,Mycena pearsoniana,Micena de Pearson,Mycenaceae,Europa,Hojarasca de coníferas
+198,Agaricus devoniensis,Champiñón de Devon,Agaricaceae,Europa,Dunas costeras
+199,Mycena albidolilacea,Micena lila pálida,Mycenaceae,Europa,Bosques de planifolios
+200,Agaricus subfloccosus,Champiñón algo escamoso,Agaricaceae,Europa,Bajo coníferas en parques
+201,Mycena latifolia,Micena de láminas anchas,Mycenaceae,Europa y Norteamérica,Hojarasca de coníferas
+202,Agaricus altipes,Champiñón de pie alto,Agaricaceae,Europa,Bosques de coníferas de montaña
+203,Agaricus lanipes,Champiñón de pie lanoso,Agaricaceae,Europa,Bosques de frondosas
+204,Russula emeticicolor,Rúsula de color emético,Russulaceae,Europa,Bosques de encinas
+205,Russula albonigra,Rúsula blanca y negra,Russulaceae,Europa,Bosques mixtos
+206,Mycena scirpicola,Micena de los juncos de laguna,Mycenaceae,Europa,Tallos de Scirpus
+207,Clitocybe barbularum,Clitocibe de los musgos,Tricholomataceae,Europa,Zonas arenosas con musgo
+208,Mycena concolor,Micena de color uniforme,Mycenaceae,Europa,Turberas y musgos húmedos
+209,Mycena mirata,Micena pequeña de la corteza,Mycenaceae,Europa,Corteza de árboles con musgo
