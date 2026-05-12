@@ -27,55 +27,36 @@
 
 
             
-            <div class="flex flex-col gap-3">
-
-                <flux:callout class="bg-[#ffeebf]! text-[#ba4e00]! border-none!">
-                    <x-slot name="icon">
-                        <flux:icon.key-round class="size-5" />
-                    </x-slot>
-                    <flux:callout.heading class="text-[#ba4e00]!">Permisos de cámara</flux:callout.heading>
-                    <flux:callout.text class="text-[#ba4e00]!">
-                        <p>Asegúrate de otorgar permisos a tu navegador para acceder a la cámara y poder tomar fotos.</p>
-                    </flux:callout.text>
-                </flux:callout>
-
-                <flux:callout class="bg-[#ccf2ff]! border-none!">
-                    <x-slot name="icon">
-                        <flux:icon.sun class="size-7 text-[#193cbf]!" />
-                    </x-slot>
-                    <flux:callout.heading class="text-[#193cbf]!">Buena iluminación</flux:callout.heading>
-                    <flux:callout.text class="text-[#193cbf]!">
-                        <p>Busca luz natural e indirecta. Evita usar flash.</p>
-                    </flux:callout.text>
-                </flux:callout>
+            <div class="flex flex-col gap-8">
 
                 <flux:callout class="bg-[#f2f7f2]! border-none!">
                     <x-slot name="icon">
-                        <flux:icon.eye class="size-5 text-[#80b67e]!" />
+                        <flux:icon.magnifying-glass-plus class="size-5 text-[#80b67e]!" />
                     </x-slot>
-                    <flux:callout.heading class="text-[#80b67e]!">Posición y enfoque</flux:callout.heading>
+                    <flux:callout.heading class="text-[#80b67e]!">Captura los detalles clave</flux:callout.heading>
                     <flux:callout.text class="text-[#80b67e]!">
-                        <p>Acércate para que el hongo ocupe la mayor parte de la imagen, asegurando un enfoque nítido.</p>
+                        <p>Intenta incluir la parte superior del sombrero y, si es visible, las láminas o poros debajo del mismo.</p>
                     </flux:callout.text>
                 </flux:callout>
 
-                <flux:callout class="bg-[#faebeb]! border-none!">
+                
+                <flux:callout class="bg-[#ffeebf]! border-none!">
                     <x-slot name="icon">
-                        <flux:icon.sparkles class="size-5 text-[#cb3434]!" />
+                        <flux:icon.sparkles class="size-5 text-[#ba4e00]!" />
                     </x-slot>
-                    <flux:callout.heading class="text-[#cb3434]!">Limpia tu lente</flux:callout.heading>
-                    <flux:callout.text class="text-[#cb3434]!">
+                    <flux:callout.heading class="text-[#ba4e00]!">Limpia tu lente</flux:callout.heading>
+                    <flux:callout.text class="text-[#ba4e00]!">
                         <p>Un lente limpio previene fotos borrosas e incrementa significativamente la precisión del reconocimiento.</p>
                     </flux:callout.text>
                 </flux:callout>
-
-                <flux:callout class="bg-[#f3e8ff]! border-none!">
+                
+                <flux:callout class="bg-[#faebeb]! text-[#cb3434]! border-none!">
                     <x-slot name="icon">
-                        <flux:icon.magnifying-glass-plus class="size-5 text-[#7e22ce]!" />
+                        <flux:icon.key-round class="size-5" />
                     </x-slot>
-                    <flux:callout.heading class="text-[#7e22ce]!">Captura los detalles clave</flux:callout.heading>
-                    <flux:callout.text class="text-[#7e22ce]!">
-                        <p>Intenta incluir la parte superior del sombrero y, si es visible, las láminas o poros debajo del mismo.</p>
+                    <flux:callout.heading class="text-[#cb3434]!">Permisos de cámara</flux:callout.heading>
+                    <flux:callout.text class="text-[#cb3434]!">
+                        <p>Asegúrate de otorgar permisos a tu navegador para acceder a la cámara y poder tomar fotos.</p>
                     </flux:callout.text>
                 </flux:callout>
                 
